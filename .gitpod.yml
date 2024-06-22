@@ -1,0 +1,6 @@
+tasks:
+  - before: docker compose up
+
+vscode:
+  extensions:
+    - "bmewburn.vscode-intelephense-client"
