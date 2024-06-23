@@ -5,20 +5,33 @@ class Conexion
 
   public function conectar()
   {
-    $this->conn = new mysqli('db', 'dev', '123', 'mboutique');
+    $this->conn = new mysqli('db', 'root', '123', 'mboutique');
 
-    // Check connection
     if ($this->conn->connect_error) {
       die('Connection failed: ' . $this->conn->connect_error);
     }
-
-    echo $this->conn->query('SELECT 1 + 1;');
   }
 
-  protected function desConectar()
+  public function desConectar()
   {
     if ($this->conn) {
       $this->conn->close();
     }
+  }
+
+  public function query($sql)
+  {
+    $this->conectar();
+    $result = $this->conn->query($sql);
+    $this->desConectar();
+    return $result;
+  }
+
+  public function execute($sql)
+  {
+    $this->conectar();
+    $result = $this->conn->query($sql);
+    $this->desConectar();
+    return $result;
   }
 }
