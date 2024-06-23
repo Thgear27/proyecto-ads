@@ -2,7 +2,7 @@
 
 class viewMessageSistema
 {
-  public function showErrorMessageShow($icon, $title, $text)
+  public function viewMessageSistemaShow($icon, $title, $text)
   {
 ?>
     <script>

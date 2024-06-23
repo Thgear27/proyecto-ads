@@ -1,7 +1,7 @@
 <?php
 class Conexion
 {
-  private $conn;
+  public $conn;
 
   public function conectar()
   {
@@ -21,17 +21,13 @@ class Conexion
 
   public function query($sql)
   {
-    $this->conectar();
     $result = $this->conn->query($sql);
-    $this->desConectar();
     return $result;
   }
 
   public function execute($sql)
   {
-    $this->conectar();
     $result = $this->conn->query($sql);
-    $this->desConectar();
     return $result;
   }
 }

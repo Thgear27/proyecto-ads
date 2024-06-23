@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloSeguridad/formAutenticarUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloSeguridad/controlAutenticarUsuario.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/shared/viewMessageSistema.php');
-
 
 function validarBoton($boton)
 {
@@ -23,13 +23,14 @@ if (validarBoton($btnSubmit)) {
     $password = $_POST['clave'];
 
     if (validarCamposTexto($user, $password)) {
-      echo "Campos validados";
+      $controlAutenticarUsuarioObj = new controlAutenticarUsuario();
+      $controlAutenticarUsuarioObj->validarUsuario($user, $password);
     } else {
       $formAutenticarUsuario = new formAutenticarUsuario();
       $formAutenticarUsuario->formAutenticarUsuarioShow("");
 
-      $viewShowMessage = new viewMessageSistema();
-      $viewShowMessage->showErrorMessageShow('error', 'Campos inválidos', 'Los campos deben tener al menos 4 caracteres');
+      $viewMessageSistemaObject = new viewMessageSistema();
+      $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Campos inválidos', 'Los campos deben tener al menos 4 caracteres');
     }
   }
 } else {
@@ -37,6 +38,6 @@ if (validarBoton($btnSubmit)) {
   $formAutenticarUsuario = new formAutenticarUsuario();
   $formAutenticarUsuario->formAutenticarUsuarioShow("");
 
-  $viewShowMessage = new viewMessageSistema();
-  $viewShowMessage->showErrorMessageShow('error', 'Acceso denegado', 'No se ha enviado el formulario');
+  $viewMessageSistemaObject = new viewMessageSistema();
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Acceso denegado', 'No se ha enviado el formulario');
 }
