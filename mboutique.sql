@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jun 23, 2024 at 05:32 PM
+-- Generation Time: Jun 27, 2024 at 06:32 PM
 -- Server version: 5.7.44
 -- PHP Version: 8.2.20
 
@@ -24,30 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Role`
+-- Table structure for table `Rol`
 --
 
-CREATE TABLE `Role` (
+CREATE TABLE `Rol` (
   `id_role` int(11) NOT NULL,
   `role` varchar(50) NOT NULL,
   `state` enum('active','inactive') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Role`
+-- Dumping data for table `Rol`
 --
 
-INSERT INTO `Role` (`id_role`, `role`, `state`) VALUES
+INSERT INTO `Rol` (`id_role`, `role`, `state`) VALUES
 (1, 'empleado', 'active'),
 (2, 'admin', 'active');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Table structure for table `Usuario`
 --
 
-CREATE TABLE `Users` (
+CREATE TABLE `Usuario` (
   `id_user` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -58,10 +58,10 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Users`
+-- Dumping data for table `Usuario`
 --
 
-INSERT INTO `Users` (`id_user`, `username`, `email`, `password`, `phone_number`, `role_id`, `state`) VALUES
+INSERT INTO `Usuario` (`id_user`, `username`, `email`, `password`, `phone_number`, `role_id`, `state`) VALUES
 (1, 'john_doe', 'john_doe@example.com', '$2y$10$a.9rTo06FLNzssgGBFpuWeveX.cfJvAWZPdX3PLbpjHeBNfsKVvnm', '9876543210', 1, 'active');
 
 --
@@ -69,15 +69,15 @@ INSERT INTO `Users` (`id_user`, `username`, `email`, `password`, `phone_number`,
 --
 
 --
--- Indexes for table `Role`
+-- Indexes for table `Rol`
 --
-ALTER TABLE `Role`
+ALTER TABLE `Rol`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indexes for table `Users`
+-- Indexes for table `Usuario`
 --
-ALTER TABLE `Users`
+ALTER TABLE `Usuario`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`),
@@ -88,15 +88,15 @@ ALTER TABLE `Users`
 --
 
 --
--- AUTO_INCREMENT for table `Role`
+-- AUTO_INCREMENT for table `Rol`
 --
-ALTER TABLE `Role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `Rol`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `Users`
+-- AUTO_INCREMENT for table `Usuario`
 --
-ALTER TABLE `Users`
+ALTER TABLE `Usuario`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -104,10 +104,10 @@ ALTER TABLE `Users`
 --
 
 --
--- Constraints for table `Users`
+-- Constraints for table `Usuario`
 --
-ALTER TABLE `Users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `Role` (`id_role`);
+ALTER TABLE `Usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `rol` (`id_role`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,7 +13,7 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: sampledb
+      MYSQL_DATABASE: mboutique
       MYSQL_USER: dev
       MYSQL_PASSWORD: 123
       MYSQL_ROOT_PASSWORD: 123
