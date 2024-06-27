@@ -8,9 +8,9 @@ function validarBoton($boton)
 {
   return isset($boton);
 }
-function validarCamposTexto($user, $password)
+function validarCamposLogin($txtEmail, $txtContrasena)
 {
-  return (strlen($user) > 3 and strlen($password) > 3);
+  return (strlen($txtEmail) > 3 and strlen($txtContrasena) > 3);
 }
 
 $btnSubmit = $_POST['btnSubmit'];
@@ -19,24 +19,23 @@ if (validarBoton($btnSubmit)) {
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // TODO: sanitize input
-    $user = $_POST['usuario'];
-    $password = $_POST['clave'];
+    $txtEmail = $_POST['txtEmail'];
+    $txtContrasena = $_POST['txtContrasena'];
 
-    if (validarCamposTexto($user, $password)) {
+    if (validarCamposLogin($txtEmail, $txtContrasena)) {
       $controlAutenticarUsuarioObj = new controlAutenticarUsuario();
-      $controlAutenticarUsuarioObj->validarUsuario($user, $password);
+      $controlAutenticarUsuarioObj->validarUsuario($txtEmail, $txtContrasena);
     } else {
       $formAutenticarUsuario = new formAutenticarUsuario();
-      $formAutenticarUsuario->formAutenticarUsuarioShow("");
+      $formAutenticarUsuario->formAutenticarUsuarioShow();
 
       $viewMessageSistemaObject = new viewMessageSistema();
       $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Campos inválidos', 'Los campos deben tener al menos 4 caracteres');
     }
   }
 } else {
-
   $formAutenticarUsuario = new formAutenticarUsuario();
-  $formAutenticarUsuario->formAutenticarUsuarioShow("");
+  $formAutenticarUsuario->formAutenticarUsuarioShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
   $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Acceso denegado', 'No se ha enviado el formulario');

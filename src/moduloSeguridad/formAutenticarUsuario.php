@@ -1,26 +1,24 @@
 <?php
 // include('../shared/vista.php');
-include($_SERVER['DOCUMENT_ROOT'] . '/shared/vista.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/shared/vista.php');
 
 class formAutenticarUsuario extends vista
 {
-  public function formAutenticarUsuarioShow($mensaje, $slot = null)
+  public function formAutenticarUsuarioShow()
   {
-    $this->getCabecera('Login');
+    $this->cabeceraShow('Login');
 ?>
-    <p><?= $mensaje ?></p>
     <h1>Autenticar Usuario</h1>
     <form action="/moduloSeguridad/getUsuario.php" method="POST">
-      <label for="usuario">Usuario:</label>
-      <input type="text" name="usuario" id="usuario" required>
+      <label for="txtEmail">Email:</label>
+      <input type="text" name="txtEmail" id="txtEmail" required>
       <br>
-      <label for="clave">Clave:</label>
-      <input type="password" name="clave" id="clave" required>
+      <label for="txtContrasena">Contraseña:</label>
+      <input type="password" name="txtContrasena" id="txtContrasena" required>
       <br>
       <input type="submit" value="Autenticar" name="btnSubmit">
     </form>
-    <?php echo $slot; ?>
 <?php
-    $this->getPiePagina();
+    $this->piePaginaShow();
   }
 }

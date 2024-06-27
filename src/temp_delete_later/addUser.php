@@ -1,5 +1,5 @@
 <?php
-require 'modelos/Conexion.php';
+require 'modelos/conexion.php';
 
 $conn = new Conexion();
 $conn->conectar();
@@ -16,11 +16,11 @@ $state = 'active';
 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
 // SQL query to insert the new user
-$sql = "INSERT INTO Users (username, email, password, phone_number, role_id, state) 
+$sql = "INSERT INTO Usuario (username, email, password, phone_number, role_id, state) 
         VALUES ('$username', '$email', '$hashedPassword', '$phone_number', $role_id, '$state')";
 
 // Execute the query
-$result = $conn->query($sql);
+$result = $conn->conn->query($sql);
 
 // Check if the query execution was successful
 if ($result) {

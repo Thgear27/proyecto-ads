@@ -1,5 +1,5 @@
 <?php
-class Conexion
+class conexion
 {
   public $conn;
 
@@ -12,22 +12,10 @@ class Conexion
     }
   }
 
-  public function desConectar()
+  public function desconectar()
   {
     if ($this->conn) {
       $this->conn->close();
     }
-  }
-
-  public function query($sql)
-  {
-    $result = $this->conn->query($sql);
-    return $result;
-  }
-
-  public function execute($sql)
-  {
-    $result = $this->conn->query($sql);
-    return $result;
   }
 }

@@ -2,7 +2,7 @@
 // uncomment the following line to add the role
 exit();
 
-require 'modelos/Conexion.php';
+require 'modelos/conexion.php';
 
 $conn = new Conexion();
 $conn->conectar();
@@ -12,10 +12,10 @@ $role = 'admin';
 $state = 'active';
 
 // SQL query to insert the new role
-$sql = "INSERT INTO Role (id_role, role, state) VALUES (2, '$role', '$state')";
+$sql = "INSERT INTO Rol (id_role, role, state) VALUES (2, '$role', '$state')";
 
 // Execute the query
-$result = $conn->query($sql);
+$result = $conn->conn->query($sql);
 
 // Check if the query execution was successful
 if ($result) {
