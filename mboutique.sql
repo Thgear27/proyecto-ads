@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jun 27, 2024 at 06:32 PM
+-- Generation Time: Jun 29, 2024 at 05:52 PM
 -- Server version: 5.7.44
 -- PHP Version: 8.2.20
 
@@ -28,18 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Rol` (
-  `id_role` int(11) NOT NULL,
-  `role` varchar(50) NOT NULL,
-  `state` enum('active','inactive') NOT NULL
+  `id_rol` int(11) NOT NULL,
+  `rol` varchar(60) DEFAULT NULL,
+  `estado` enum('active','inactive') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Rol`
 --
 
-INSERT INTO `Rol` (`id_role`, `role`, `state`) VALUES
-(1, 'empleado', 'active'),
-(2, 'admin', 'active');
+INSERT INTO `Rol` (`id_rol`, `rol`, `estado`) VALUES
+(1, 'almacen', 'active'),
+(2, 'tienda', 'active'),
+(3, 'administrador', 'active');
 
 -- --------------------------------------------------------
 
@@ -48,21 +49,25 @@ INSERT INTO `Rol` (`id_role`, `role`, `state`) VALUES
 --
 
 CREATE TABLE `Usuario` (
-  `id_user` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `phone_number` varchar(15) DEFAULT NULL,
-  `role_id` int(11) DEFAULT NULL,
-  `state` enum('active','inactive') NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `ape_paterno` varchar(50) DEFAULT NULL,
+  `ape_materno` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `contrasena` varchar(255) DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `id_rol` int(11) DEFAULT NULL,
+  `estado` enum('active','inactive') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Usuario`
 --
 
-INSERT INTO `Usuario` (`id_user`, `username`, `email`, `password`, `phone_number`, `role_id`, `state`) VALUES
-(1, 'john_doe', 'john_doe@example.com', '$2y$10$a.9rTo06FLNzssgGBFpuWeveX.cfJvAWZPdX3PLbpjHeBNfsKVvnm', '9876543210', 1, 'active');
+INSERT INTO `Usuario` (`id_usuario`, `nombre`, `ape_paterno`, `ape_materno`, `email`, `contrasena`, `telefono`, `id_rol`, `estado`) VALUES
+(2, 'Juan', 'Perez', 'Gomez', 'almacen@example.com', '$2y$10$O2zBP2Mlq63vHv2EOdnEUeOn1tleNKh3Yy2nMx.7wJ3HrEYpOtATe', '1234567890', 1, 'active'),
+(3, 'Pedro', 'Perez', 'Tantalean', 'tienda@example.com', '$2y$10$wacieumSPqyLwRZ62K5.cOj8bzGr79c44U2UQHbmpEMsVuvg6J8a2', '1234567890', 2, 'active'),
+(4, 'Mohamed', 'Luque', 'Garcia', 'admin@example.com', '$2y$10$JzvEtL.Z5hOCCUBWNPRLvuv8gswtVvd.yYQn4NVVElCnFQloaEuku', '1234567890', 3, 'active');
 
 --
 -- Indexes for dumped tables
@@ -72,16 +77,14 @@ INSERT INTO `Usuario` (`id_user`, `username`, `email`, `password`, `phone_number
 -- Indexes for table `Rol`
 --
 ALTER TABLE `Rol`
-  ADD PRIMARY KEY (`id_role`);
+  ADD PRIMARY KEY (`id_rol`);
 
 --
 -- Indexes for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `role_id` (`role_id`);
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD KEY `id_rol` (`id_rol`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -91,13 +94,13 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT for table `Rol`
 --
 ALTER TABLE `Rol`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -107,7 +110,7 @@ ALTER TABLE `Usuario`
 -- Constraints for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `rol` (`id_role`);
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `Rol` (`id_rol`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

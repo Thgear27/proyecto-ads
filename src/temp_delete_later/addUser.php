@@ -1,32 +1,35 @@
 <?php
-require 'modelos/conexion.php';
+exit();
+include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/conexion.php');
 
-$conn = new Conexion();
+$conn = new conexion();
 $conn->conectar();
 
-// Hardcoded values for the user
-$username = 'john_doe';
-$email = 'john_doe@example.com';
-$password = '12345';
-$phone_number = '9876543210';
-$role_id = 1; // Assuming the role with ID 1 exists in your Role table
-$state = 'active';
+// Valores hardcoded para el usuario
+$nombre = 'Mohamed';
+$ape_paterno = 'Luque';
+$ape_materno = 'Garcia';
+$email = 'admin@example.com';
+$contrasena = '12345';
+$telefono = '1234567890';
+$rol_id = 3; // Suponiendo que el rol con ID 2 existe en tu tabla de roles
+$estado = 'active';
 
-// Hash the password
-$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+// Hash la contraseña
+$hashedPassword = password_hash($contrasena, PASSWORD_BCRYPT);
 
-// SQL query to insert the new user
-$sql = "INSERT INTO Usuario (username, email, password, phone_number, role_id, state) 
-        VALUES ('$username', '$email', '$hashedPassword', '$phone_number', $role_id, '$state')";
+// Consulta SQL para insertar el nuevo usuario
+$sql = "INSERT INTO Usuario (nombre, ape_paterno, ape_materno, email, contrasena, telefono, id_rol, estado) 
+        VALUES ('$nombre', '$ape_paterno', '$ape_materno', '$email', '$hashedPassword', '$telefono', $rol_id, '$estado')";
 
-// Execute the query
+// Ejecutar la consulta
 $result = $conn->conn->query($sql);
 
-// Check if the query execution was successful
+// Verificar si la ejecución de la consulta fue exitosa
 if ($result) {
-  echo "User added successfully.";
+  echo "Usuario agregado exitosamente.";
 } else {
-  echo "Failed to add user: " . $conn->conn->error;
+  echo "Error al agregar el usuario: " . $conn->conn->error;
 }
 
 $conn->desConectar();

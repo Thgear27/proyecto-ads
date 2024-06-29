@@ -23,7 +23,7 @@ class Eusuario extends conexion
   {
     $this->conectar();
 
-    $sql = "SELECT password FROM Usuario WHERE email = '$txtEmail'";
+    $sql = "SELECT contrasena FROM Usuario WHERE email = '$txtEmail'";
     $respuesta = $this->conn->query($sql);
 
     // Verificar si se encontró alguna fila
@@ -34,7 +34,7 @@ class Eusuario extends conexion
 
     // Obtener la contraseña hasheada desde la base de datos
     $fila = $respuesta->fetch_assoc();
-    $hashContrasenaDB = $fila['password'];
+    $hashContrasenaDB = $fila['contrasena'];
 
     // Verificar la contraseña
     $isPasswordCorrect = password_verify($txtContrasena, $hashContrasenaDB);
@@ -49,7 +49,7 @@ class Eusuario extends conexion
   public function validarEstado($txtEmail)
   {
     $this->conectar();
-    $sql = "SELECT * FROM Usuario WHERE email = '$txtEmail' AND state = 'active'";
+    $sql = "SELECT * FROM Usuario WHERE email = '$txtEmail' AND estado = 'active'";
     $respuesta = $this->conn->query($sql);
 
     // Verificar si se encontró alguna fila
@@ -62,30 +62,36 @@ class Eusuario extends conexion
     return true;
   }
 
-  // public function validarUsuario($txtEmail, $txtContrasena)
-  // {
-  //   $this->conectar();
+  public function verificarRol($txtEmail)
+  {
+    $this->conectar();
+    $sql = "SELECT id_rol FROM Usuario WHERE email = '$txtEmail'";
+    $respuesta = $this->conn->query($sql);
 
-  //   $sql = "SELECT password, state FROM Users WHERE email = '$txtEmail'";
-  //   $result = $this->conn->query($sql);
+    // Verificar si se encontró alguna fila
+    if ($respuesta->num_rows == 0) {
+      $this->desconectar();
+      return null;
+    }
 
-  //   if ($result && $result->num_rows > 0) {
-  //     $row = $result->fetch_assoc();
-  //     $hashedPassword = $row['password'];
-  //     $userState = $row['state'];
+    $fila = $respuesta->fetch_assoc();
+    $rol = $fila['id_rol'];
 
-  //     // Check user state
-  //     if ($userState === 'inactive') {
-  //       return "inactive user";
-  //     }
+    switch ($rol) {
+      case 1:
+        $rol = "almacen";
+        break;
+      case 2:
+        $rol = "tienda";
+        break;
+      case 3:
+        $rol = "administrador";
+        break;
+      default:
+        $rol = "desconcido";
+    }
 
-  //     if (password_verify($txtContrasena, $hashedPassword)) {
-  //       return "success";
-  //     } else {
-  //       return "invalid password";
-  //     }
-  //   } else {
-  //     return "user not found";
-  //   }
-  // }
+    $this->desconectar();
+    return $rol;
+  }
 }

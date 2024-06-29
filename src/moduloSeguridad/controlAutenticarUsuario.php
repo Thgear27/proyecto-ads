@@ -1,6 +1,7 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/usuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/Eusuario.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloSeguridad/formAutenticarUsuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloSeguridad/panelPrincipalSistema.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/shared/viewMessageSistema.php');
 
 class controlAutenticarUsuario
@@ -35,10 +36,10 @@ class controlAutenticarUsuario
           $viewMessageSistemaObject = new viewMessageSistema();
           $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'Usuario inactivo');
         } else {
-          $formAutenticarUsuario = new formAutenticarUsuario();
-          $formAutenticarUsuario->formAutenticarUsuarioShow();
+          $rol = $objUsuario->verificarRol($txtEmail);
 
-          echo "Usuario autenticado correctamente";
+          $panelPrincipalObject = new panelPrincipalSistema();
+          $panelPrincipalObject->panelPrincipalSistemaShow($rol);
 
           $viewMessageSistemaObject = new viewMessageSistema();
           $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Usuario Autenticado', 'Usuario autenticado correctamente');

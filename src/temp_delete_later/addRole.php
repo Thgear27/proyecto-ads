@@ -1,27 +1,25 @@
 <?php
-// uncomment the following line to add the role
 exit();
+include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/conexion.php');
 
-require 'modelos/conexion.php';
-
-$conn = new Conexion();
+$conn = new conexion();
 $conn->conectar();
 
-// Hardcoded values for the role
-$role = 'admin';
-$state = 'active';
+// Valores hardcoded para el rol
+$rol = 'administrador';
+$estado = 'active';
 
-// SQL query to insert the new role
-$sql = "INSERT INTO Rol (id_role, role, state) VALUES (2, '$role', '$state')";
+// Consulta SQL para insertar el nuevo rol
+$sql = "INSERT INTO Rol (rol, estado) VALUES ('$rol', '$estado')";
 
-// Execute the query
+// Ejecutar la consulta
 $result = $conn->conn->query($sql);
 
-// Check if the query execution was successful
+// Verificar si la ejecución de la consulta fue exitosa
 if ($result) {
-    echo "Role added successfully.";
+    echo "Rol agregado exitosamente.";
 } else {
-    echo "Failed to add role: " . $conn->conn->error;
+    echo "Error al agregar el rol: " . $conn->conn->error;
 }
 
 $conn->desConectar();
