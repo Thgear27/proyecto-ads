@@ -2,9 +2,7 @@ version: "3.1"
 
 services:
   php:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: php:7.2-apache
     ports:
       - 8080:80
     volumes:
@@ -13,12 +11,10 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: mboutique
+      MYSQL_DATABASE: sampledb
       MYSQL_USER: dev
       MYSQL_PASSWORD: 123
       MYSQL_ROOT_PASSWORD: 123
-    ports:
-      - "3036:3306"
     volumes:
       - ./db:/var/lib/mysql
 
