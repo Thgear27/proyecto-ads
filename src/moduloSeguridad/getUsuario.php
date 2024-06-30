@@ -18,8 +18,7 @@ $btnSubmit = $_POST['btnSubmit'];
 if (validarBoton($btnSubmit)) {
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // TODO: sanitize input
-    $txtEmail = $_POST['txtEmail'];
+    $txtEmail = filter_input(INPUT_POST, 'txtEmail', FILTER_SANITIZE_EMAIL);
     $txtContrasena = $_POST['txtContrasena'];
 
     if (validarCamposLogin($txtEmail, $txtContrasena)) {
