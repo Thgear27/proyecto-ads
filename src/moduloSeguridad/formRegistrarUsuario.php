@@ -11,15 +11,15 @@ class formRegistrarUsuario extends vista
     <form action="/moduloSeguridad/getRegistrarUsuario.php" method="POST">
       <div>
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="nombre" name="nombre" minlength="4" required>
       </div>
       <div>
         <label for="ape_paterno">Apellido Paterno:</label>
-        <input type="text" id="ape_paterno" name="ape_paterno" required>
+        <input type="text" id="ape_paterno" name="ape_paterno" minlength="4" required>
       </div>
       <div>
         <label for="ape_materno">Apellido Materno:</label>
-        <input type="text" id="ape_materno" name="ape_materno" required>
+        <input type="text" id="ape_materno" name="ape_materno" minlength="4" required>
       </div>
       <div>
         <label for="email">Email:</label>
@@ -27,7 +27,7 @@ class formRegistrarUsuario extends vista
       </div>
       <div>
         <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required>
+        <input type="password" id="contrasena" name="contrasena" minlength="4" required>
       </div>
       <div>
         <label for="telefono">Teléfono:</label>
