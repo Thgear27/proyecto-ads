@@ -33,6 +33,6 @@ class panelPrincipalSistema extends vista
 <?php
     }
 
-    $this->piePaginaShow("Panel principal del sistema");
+    $this->piePaginaShow();
   }
 }
