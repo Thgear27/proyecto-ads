@@ -11,7 +11,7 @@ class formAutenticarUsuario extends vista
     <h1>Autenticar Usuario</h1>
     <form action="/moduloSeguridad/getUsuario.php" method="POST">
       <label for="txtEmail">Email:</label>
-      <input type="text" name="txtEmail" id="txtEmail" required>
+      <input type="email" name="txtEmail" id="txtEmail" required>
       <br>
       <label for="txtContrasena">Contraseña:</label>
       <input type="password" name="txtContrasena" id="txtContrasena" required>

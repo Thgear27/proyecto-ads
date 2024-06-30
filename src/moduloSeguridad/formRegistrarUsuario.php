@@ -7,6 +7,7 @@ class formRegistrarUsuario extends vista
   {
     $this->cabeceraShow('Registrar Empleado');
 ?>
+    <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
     <h1>Registrar Empleado</h1>
     <form action="/moduloSeguridad/getRegistrarUsuario.php" method="POST">
       <div>
@@ -36,6 +37,7 @@ class formRegistrarUsuario extends vista
       <div>
         <label for="id_rol">Rol:</label>
         <select id="id_rol" name="id_rol" required>
+          <option disabled selected>Seleccione el rol</option>
           <option value="1">Almacen</option>
           <option value="2">Tienda</option>
           <option value="3">Administrador</option>

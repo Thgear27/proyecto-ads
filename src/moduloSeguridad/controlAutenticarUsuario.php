@@ -41,12 +41,6 @@ class controlAutenticarUsuario
           $_SESSION['autenticado'] = "SI";
 
           header('Location: /moduloSeguridad/indexPanelPrincipal.php');
-
-          // $panelPrincipalObject = new panelPrincipalSistema();
-          // $panelPrincipalObject->panelPrincipalSistemaShow();
-
-          // $viewMessageSistemaObject = new viewMessageSistema();
-          // $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Usuario Autenticado', 'Usuario autenticado correctamente', '/moduloSeguridad/indexPanelPrincipal.php');
         }
       }
     }
