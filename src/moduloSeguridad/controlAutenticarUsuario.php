@@ -36,13 +36,11 @@ class controlAutenticarUsuario
           $viewMessageSistemaObject = new viewMessageSistema();
           $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'Usuario inactivo');
         } else {
-          $rol = $objUsuario->verificarRol($txtEmail);
+          $_SESSION['email'] = $txtEmail;
+          $_SESSION['rol'] = $objUsuario->verificarRol($txtEmail);
+          $_SESSION['autenticado'] = "SI";
 
-          $panelPrincipalObject = new panelPrincipalSistema();
-          $panelPrincipalObject->panelPrincipalSistemaShow($rol);
-
-          $viewMessageSistemaObject = new viewMessageSistema();
-          $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Usuario Autenticado', 'Usuario autenticado correctamente');
+          header('Location: /moduloSeguridad/indexPanelPrincipal.php');
         }
       }
     }

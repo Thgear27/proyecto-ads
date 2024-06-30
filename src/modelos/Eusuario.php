@@ -94,4 +94,39 @@ class Eusuario extends conexion
     $this->desconectar();
     return $rol;
   }
+
+  public function buscarUsuarioPorEmail($txtEmail)
+  {
+    $this->conectar();
+    $sql = "SELECT * FROM Usuario WHERE email = '$txtEmail'";
+    $respuesta = $this->conn->query($sql);
+
+    // Verificar si se encontró alguna fila
+    if ($respuesta->num_rows == 0) {
+      $this->desconectar();
+      return null;
+    }
+
+    $this->desconectar();
+    return $respuesta;
+  }
+
+  public function guardarUsuario($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $txtContrasena, $txtTelefono, $id_rol)
+  {
+    $this->conectar();
+    $hashContrasena = password_hash($txtContrasena, PASSWORD_BCRYPT);
+
+    $sql = "INSERT INTO Usuario (nombre, ape_paterno, ape_materno, email, contrasena, telefono, id_rol, estado) 
+        VALUES ('$txtNombre', '$txtApePaterno', '$txtApeMaterno', '$txtEmail', '$hashContrasena', '$txtTelefono', $id_rol, 'active')";
+
+    $respuesta = $this->conn->query($sql);
+
+    if (!$respuesta) {
+      $this->desconectar();
+      return null;
+    }
+
+    $this->desconectar();
+    return $respuesta;
+  }
 }
