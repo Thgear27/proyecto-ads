@@ -40,11 +40,13 @@ class controlAutenticarUsuario
           $_SESSION['rol'] = $objUsuario->verificarRol($txtEmail);
           $_SESSION['autenticado'] = "SI";
 
-          $panelPrincipalObject = new panelPrincipalSistema();
-          $panelPrincipalObject->panelPrincipalSistemaShow();
+          header('Location: /moduloSeguridad/indexPanelPrincipal.php');
 
-          $viewMessageSistemaObject = new viewMessageSistema();
-          $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Usuario Autenticado', 'Usuario autenticado correctamente');
+          // $panelPrincipalObject = new panelPrincipalSistema();
+          // $panelPrincipalObject->panelPrincipalSistemaShow();
+
+          // $viewMessageSistemaObject = new viewMessageSistema();
+          // $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Usuario Autenticado', 'Usuario autenticado correctamente', '/moduloSeguridad/indexPanelPrincipal.php');
         }
       }
     }

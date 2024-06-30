@@ -2,7 +2,7 @@
 
 class controlRegistrarUsuario
 {
-  function buscarUsuario() {
+  function registrarUsuario() {
     
   }
 }

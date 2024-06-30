@@ -8,7 +8,7 @@ class formRegistrarUsuario extends vista
     $this->cabeceraShow('Registrar Empleado');
 ?>
     <h1>Registrar Empleado</h1>
-    <form action="/moduloSeguridad/getRegistrarUsuario.php" method="post">
+    <form action="/moduloSeguridad/getRegistrarUsuario.php" method="POST">
       <div>
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
@@ -42,14 +42,7 @@ class formRegistrarUsuario extends vista
         </select>
       </div>
       <div>
-        <label for="estado">Estado:</label>
-        <select id="estado" name="estado" required>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
-      </div>
-      <div>
-        <input type="submit" value="Registrar" name="btnSubmit">
+        <input type="submit" value="Registrar" name="btnRegistrarse">
       </div>
     </form>
 <?php

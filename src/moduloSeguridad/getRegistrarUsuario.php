@@ -9,33 +9,32 @@ if (!isset($_SESSION['autenticado'])) {
   exit();
 }
 
-function validarBoton($boton)
+function validarBoton($btnRegistrarse)
 {
-  return isset($boton);
+  return isset($btnRegistrarse);
 }
 
-function validarCampos($nombre, $ape_paterno, $ape_materno, $email, $contrasena, $telefono, $id_rol, $estado)
+function validarCampos($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $txtContrasena, $txtTelefono, $id_rol)
 {
   // TODO: Implementar validación de campos
   return true;
 }
 
-$btnSubmit = $_POST['btnSubmit'];
+$btnRegistrarse = $_POST['btnRegistrarse'];
 
-if (validarBoton($btnSubmit)) {
+if (validarBoton($btnRegistrarse)) {
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES, 'UTF-8');
-    $ape_paterno = htmlspecialchars($_POST['ape_paterno'], ENT_QUOTES, 'UTF-8');
-    $ape_materno = htmlspecialchars($_POST['ape_materno'], ENT_QUOTES, 'UTF-8');
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $contrasena = htmlspecialchars($_POST['contrasena'], ENT_QUOTES, 'UTF-8');
-    $telefono = htmlspecialchars($_POST['telefono'], ENT_QUOTES, 'UTF-8');
+    $txtNombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES, 'UTF-8');
+    $txtApePaterno = htmlspecialchars($_POST['ape_paterno'], ENT_QUOTES, 'UTF-8');
+    $txtApeMaterno = htmlspecialchars($_POST['ape_materno'], ENT_QUOTES, 'UTF-8');
+    $txtEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $txtContrasena = htmlspecialchars($_POST['contrasena'], ENT_QUOTES, 'UTF-8');
+    $txtTelefono = htmlspecialchars($_POST['telefono'], ENT_QUOTES, 'UTF-8');
     $id_rol = filter_input(INPUT_POST, 'id_rol', FILTER_VALIDATE_INT);
-    $estado = htmlspecialchars($_POST['estado'], ENT_QUOTES, 'UTF-8');
 
-    if (validarCampos($nombre, $ape_paterno, $ape_materno, $email, $contrasena, $telefono, $id_rol, $estado)) {
+    if (validarCampos($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $txtContrasena, $txtTelefono, $id_rol)) {
       $controlRegistrarUsuarioObject = new controlRegistrarUsuario();
-      $controlRegistrarUsuarioObject->buscarUsuario($nombre, $ape_paterno, $ape_materno, $email, $contrasena, $telefono, $id_rol, $estado); 
+      $controlRegistrarUsuarioObject->registrarUsuario($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $txtContrasena, $txtTelefono, $id_rol); 
     } else {
       $formRegistrarUsuarioObject = new formRegistrarUsuario();
       $formRegistrarUsuarioObject->formRegistrarUsuarioShow();
