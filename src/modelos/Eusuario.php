@@ -136,15 +136,5 @@ class Eusuario extends conexion
 
     $sql = "UPDATE Usuario SET contrasena = '$hashContrasena' WHERE email = '$txtEmail'";
     $this->conn->query($sql);
-    //$respuesta = $this->conn->query($sql);
-
-    /*
-    if (!$respuesta) {
-      $this->desconectar();
-      return null;
-    }
-
-    $this->desconectar();
-    return $respuesta;*/
   }
 }

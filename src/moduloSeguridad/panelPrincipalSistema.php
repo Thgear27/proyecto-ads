@@ -8,6 +8,8 @@ class panelPrincipalSistema extends vista
     $this->cabeceraShow("Panel principal del sistema");
     $rol = $_SESSION['rol'];
     $email = $_SESSION['email'];
+    $rol = $_SESSION['rol'];
+    $email = $_SESSION['email'];
 
     if ($rol == "almacen") {
 ?>
