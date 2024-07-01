@@ -8,6 +8,8 @@ class panelPrincipalSistema extends vista
     $this->cabeceraShow("Panel principal del sistema");
     $rol = $_SESSION['rol'];
     $email = $_SESSION['email'];
+    $rol = $_SESSION['rol'];
+    $email = $_SESSION['email'];
 
     if ($rol == "almacen") {
 ?>
@@ -24,7 +26,9 @@ class panelPrincipalSistema extends vista
       <h1>Bienvenido administrador</h1>
       <p>Panel principal del sistema</p>
       <p>Usuario: <?= $email ?></p>
+      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
       <a href="/moduloSeguridad/indexRegistrarUsuario.php">Registrar Nuevo Usuario</a>
+      <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
     <?php
     } elseif ($rol == "desconcido") {
     ?>
