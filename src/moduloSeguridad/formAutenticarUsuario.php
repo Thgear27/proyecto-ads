@@ -1,5 +1,4 @@
 <?php
-// include('../shared/vista.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/shared/vista.php');
 
 class formAutenticarUsuario extends vista
@@ -18,6 +17,7 @@ class formAutenticarUsuario extends vista
       <br>
       <input type="submit" value="Autenticar" name="btnSubmit">
     </form>
+    <a href="/moduloSeguridad/indexReestablecerContrasena.php">Recuperar contraseña</a>
 <?php
     $this->piePaginaShow();
   }
