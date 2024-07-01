@@ -14,7 +14,7 @@ class formAutenticarUsuario extends vista
       <input type="email" name="txtEmail" id="txtEmail" required>
       <br>
       <label for="txtContrasena">Contraseña:</label>
-      <input type="password" name="txtContrasena" id="txtContrasena" required>
+      <input type="password" name="txtContrasena" id="txtContrasena" minlength="4" required>
       <br>
       <input type="submit" value="Autenticar" name="btnSubmit">
     </form>

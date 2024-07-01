@@ -129,4 +129,22 @@ class Eusuario extends conexion
     $this->desconectar();
     return $respuesta;
   }
+
+  public function actualizarContrasenaUsuario($txtEmail,$txtContrasenaNueva){
+    $this->conectar();
+    $hashContrasena = password_hash($txtContrasenaNueva, PASSWORD_BCRYPT);
+
+    $sql = "UPDATE Usuario SET contrasena = '$hashContrasena' WHERE email = '$txtEmail'";
+    $this->conn->query($sql);
+    //$respuesta = $this->conn->query($sql);
+
+    /*
+    if (!$respuesta) {
+      $this->desconectar();
+      return null;
+    }
+
+    $this->desconectar();
+    return $respuesta;*/
+  }
 }

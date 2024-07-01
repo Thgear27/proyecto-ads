@@ -2,6 +2,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/Eusuario.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloSeguridad/formRegistrarUsuario.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloSeguridad/panelPrincipalSistema.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/shared/viewMessageSistema.php');
 
 class controlRegistrarUsuario
 {

@@ -24,7 +24,9 @@ class panelPrincipalSistema extends vista
       <h1>Bienvenido administrador</h1>
       <p>Panel principal del sistema</p>
       <p>Usuario: <?= $email ?></p>
+      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
       <a href="/moduloSeguridad/indexRegistrarUsuario.php">Registrar Nuevo Usuario</a>
+      <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
     <?php
     } elseif ($rol == "desconcido") {
     ?>
