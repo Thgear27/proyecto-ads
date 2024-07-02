@@ -7,6 +7,7 @@ class formCodigoSeguridad extends vista
   {
     $this->cabeceraShow('Código de Seguridad');
 ?>
+    <a href="/index.php">Regresar al login</a>
     <h1>Ingrese su código de seguridad</h1>
     <form action="/moduloSeguridad/getReestablacerContrasena.php" method="POST">
       <label for="txtCodigoSeguridad">Código:</label>

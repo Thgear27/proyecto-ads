@@ -7,6 +7,7 @@ class formBuscarUsuario extends vista
   {
     $this->cabeceraShow('Búsqueda de Usuario');
 ?>
+    <a href="/index.php">Regresar al login</a>
     <h1>Buscar usuario</h1>
     <form action="/moduloSeguridad/getReestablacerContrasena.php" method="POST">
       <label for="txtEmail">Email:</label>

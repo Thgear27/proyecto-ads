@@ -71,7 +71,7 @@ if (validarBoton($btnAceptar)) {
   }
 } elseif (validarBoton($btnCodigoSeguridad)) {
   $txtCodigoSeguridad = htmlspecialchars($_POST['txtCodigoSeguridad'], ENT_QUOTES, 'UTF-8');
-  $codigoSeguridadEnviado = "1234"; // TODO: Cambiar por el código enviado por email
+  $codigoSeguridadEnviado = $_SESSION['codigo_aleatorio'];
 
   if (validarCodigoSeguridad($txtCodigoSeguridad, $codigoSeguridadEnviado)) {
     $controlReestablecerContrasenaObject = new controlReestablecerContrasena();
