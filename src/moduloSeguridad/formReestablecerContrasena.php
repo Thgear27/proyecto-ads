@@ -7,6 +7,7 @@ class formReestablecerContrasena extends vista
   {
     $this->cabeceraShow('Reestablecer contraseña');
 ?>
+    <a href="/index.php">Regresar al login</a>
     <h1>Reestablecer contraseña</h1>
     <form action="/moduloSeguridad/getReestablacerContrasena.php" method="POST">
       <div>
