@@ -24,7 +24,7 @@ class formRegistrarProductoAlmacen extends vista
       </div>
       <div>
         <label for="precio">Precio unitario:</label>
-        <input type="number" id="precio" name="precio" required>
+        <input type="number" id="precio" name="precio" step=".01" required>
       </div>
       <input type="submit" value="Registrar producto" name="btnRegistrarProducto">
     </form>

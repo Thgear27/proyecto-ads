@@ -17,10 +17,12 @@ class controlRegistrarProductoAlmacen
             $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'El producto ya se encuentra registrado');
         } else {
             $productoAlmacenObject->registrarProducto($txtProducto, $txtDescripcion, $txtCantidad, $txtPrecio);
-            header('Location: /moduloSeguridad/indexPanelPrincipal.php');
+
+            $formRegistrarProductoAlmacenObject = new formRegistrarProductoAlmacen();
+            $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
 
             $viewMessageSistemaObject = new viewMessageSistema();
-            $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Registro exitoso', 'Producto registrado correctamente');
+            $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Registro exitoso', 'Producto registrado correctamente', '/moduloSeguridad/indexPanelPrincipal.php');
         }
     }
 }
