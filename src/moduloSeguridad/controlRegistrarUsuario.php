@@ -29,7 +29,7 @@ class controlRegistrarUsuario
         $panelPrincipalObject->panelPrincipalSistemaShow();
 
         $viewMessageSistemaObject = new viewMessageSistema();
-        $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Registro exitoso', 'Usuario registrado correctamente');
+        $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Registro exitoso', 'Usuario registrado correctamente', '/moduloSeguridad/indexPanelPrincipal.php');
       }
     }
   }
