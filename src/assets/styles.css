@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -19,7 +25,8 @@ form {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 500px;
+  max-width: 50%;
 }
 
 label {
@@ -31,6 +38,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="number"],
 select {
   width: calc(100% - 20px);
   padding: 10px;
@@ -80,7 +88,7 @@ nav {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-top: 20px;
+  width: 100%;
 }
 
 .nav-link {
@@ -89,6 +97,7 @@ nav {
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
+  width: 100%;
 }
 
 .nav-link:hover {
@@ -158,6 +167,8 @@ tbody td {
   box-shadow: none;
   width: auto;
   display: flex;
+  width: 100%;
+  max-width: none;
   gap: 10px;
 }
 
@@ -177,4 +188,17 @@ tbody td {
 
 .submit-buscar:hover {
   background-color: #0056b3;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

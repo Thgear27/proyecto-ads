@@ -7,7 +7,7 @@ class formAutenticarUsuario extends vista
   {
     $this->cabeceraShow('Login');
 ?>
-    <h1>Autenticar Usuario</h1>
+    <h1 style="margin-bottom: 20px;">Autenticar Usuario</h1>
     <form action="/moduloSeguridad/getUsuario.php" method="POST">
       <label for="txtEmail">Email:</label>
       <input type="email" name="txtEmail" id="txtEmail" required>

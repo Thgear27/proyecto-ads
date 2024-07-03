@@ -9,7 +9,7 @@ class panelStockAlmacen extends vista
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
     <div class="container">
-      <h1>Productos de Almacén</h1>
+      <h1 style="margin-bottom: 20px;">Productos de Almacén</h1>
       <!-- TODO: add implementation -->
       <form class="form-buscar" action="todo">
         <input type="text" class="input-buscar" id="inputBuscar" placeholder="Buscar productos por nombre...">
