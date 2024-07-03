@@ -12,6 +12,7 @@ class vista
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js"></script>
       <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="/assets/styles.css">
       <title><?= $texto ?></title>
     </head>
 
@@ -21,7 +22,7 @@ class vista
   protected function piePaginaShow()
   {
     ?>
-      <footer>&copy; Footer</footer>
+      <footer>&copy; Marjorie Boutique</footer>
     </body>
     </html>
 <?php

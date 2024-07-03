@@ -17,9 +17,12 @@ class panelPrincipalSistema extends vista
       <p>Panel principal del sistema</p>
       <p>Usuario: <?= $email ?></p>
       <p>Rol: <?= $rol ?></p>
-      <a href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
-      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
-      <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
+      <nav>
+        <a class="nav-link" href="/moduloAlmacen/indexStockAlmacen.php">Stock Almacen</a>
+        <a class="nav-link" href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
+        <a class="nav-link" href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
+        <a class="nav-link" href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
+      </nav>
     <?php
     } elseif ($rol == "tienda") {
     ?>
@@ -27,8 +30,10 @@ class panelPrincipalSistema extends vista
       <p>Panel principal del sistema</p>
       <p>Usuario: <?= $email ?></p>
       <p>Rol: <?= $rol ?></p>
-      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
-      <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
+      <nav>
+        <a class="nav-link" href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
+        <a class="nav-link" href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
+      </nav>
     <?php
     } elseif ($rol == "administrador") {
     ?>
@@ -36,10 +41,13 @@ class panelPrincipalSistema extends vista
       <p>Panel principal del sistema</p>
       <p>Usuario: <?= $email ?></p>
       <p>Rol: <?= $rol ?></p>
-      <a href="/moduloSeguridad/indexRegistrarUsuario.php">Registrar Nuevo Usuario</a>
-      <a href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
-      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
-      <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
+      <nav>
+        <a class="nav-link" href="/moduloSeguridad/indexRegistrarUsuario.php">Registrar Nuevo Usuario</a>
+        <a class="nav-link" href="/moduloAlmacen/indexStockAlmacen.php">Stock Almacen</a>
+        <a class="nav-link" href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
+        <a class="nav-link" href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
+        <a class="nav-link" href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
+      </nav>
     <?php
     } elseif ($rol == "desconcido") {
     ?>
