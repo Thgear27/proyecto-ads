@@ -17,7 +17,7 @@ class formAutenticarUsuario extends vista
       <br>
       <input type="submit" value="Autenticar" name="btnSubmit">
     </form>
-    <a href="/moduloSeguridad/indexReestablecerContrasena.php">Recuperar contraseña</a>
+    <a href="/moduloSeguridad/indexReestablecerContrasena.php">Reestablecer contraseña</a>
 <?php
     $this->piePaginaShow();
   }

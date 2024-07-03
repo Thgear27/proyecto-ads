@@ -15,20 +15,30 @@ class panelPrincipalSistema extends vista
 ?>
       <h1>Bienvenido almacenero</h1>
       <p>Panel principal del sistema</p>
+      <p>Usuario: <?= $email ?></p>
+      <p>Rol: <?= $rol ?></p>
+      <a href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
+      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
+      <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
     <?php
     } elseif ($rol == "tienda") {
     ?>
       <h1>Bienvenido asistente de tienda</h1>
       <p>Panel principal del sistema</p>
+      <p>Usuario: <?= $email ?></p>
+      <p>Rol: <?= $rol ?></p>
+      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
+      <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
     <?php
     } elseif ($rol == "administrador") {
     ?>
       <h1>Bienvenido administrador</h1>
       <p>Panel principal del sistema</p>
       <p>Usuario: <?= $email ?></p>
-      <a href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
+      <p>Rol: <?= $rol ?></p>
       <a href="/moduloSeguridad/indexRegistrarUsuario.php">Registrar Nuevo Usuario</a>
-      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>      
+      <a href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
+      <a href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
       <a href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
     <?php
     } elseif ($rol == "desconcido") {
@@ -37,7 +47,6 @@ class panelPrincipalSistema extends vista
       <p>Rol desconocido</p>
 <?php
     }
-
     $this->piePaginaShow();
   }
 }

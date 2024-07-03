@@ -9,6 +9,13 @@ if (!isset($_SESSION['autenticado'])) {
   exit();
 }
 
+$rol = $_SESSION['rol'];
+
+if ($rol != "administrador") {
+  header('Location: /moduloSeguridad/indexPanelPrincipal.php');
+  exit();
+}
+
 $nombreCampoErroneo = '';
 $mensajeError = '';
 

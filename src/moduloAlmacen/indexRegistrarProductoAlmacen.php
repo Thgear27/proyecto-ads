@@ -8,5 +8,12 @@ if (!isset($_SESSION['autenticado'])) {
   exit();
 }
 
+$rol = $_SESSION['rol'];
+
+if ($rol != "almacen" && $rol != "administrador") {
+  header('Location: /moduloSeguridad/indexPanelPrincipal.php');
+  exit();
+}
+
 $formRegistrarProductoAlmacenObject = new formRegistrarProductoAlmacen();
 $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
