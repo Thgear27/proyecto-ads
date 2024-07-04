@@ -8,7 +8,7 @@ class formRegistrarUsuario extends vista
     $this->cabeceraShow('Registrar Empleado');
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
-    <h1>Registrar Empleado</h1>
+    <h1 style="margin-bottom: 20px;">Registrar Empleado</h1>
     <form action="/moduloSeguridad/getRegistrarUsuario.php" method="POST">
       <div>
         <label for="nombre">Nombre:</label>

@@ -8,7 +8,7 @@ class formRegistrarProductoAlmacen extends vista
     $this->cabeceraShow('Registrar producto');
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
-    <h1>Registrar Producto</h1>
+    <h1 style="margin-bottom: 20px;">Registrar Producto</h1>
     <form action="/moduloAlmacen/getRegistrarProductoAlmacen.php" method="POST">
       <div>
         <label for="nombreProducto">Nombre del producto:</label>

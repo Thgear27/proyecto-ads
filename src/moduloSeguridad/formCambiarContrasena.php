@@ -8,7 +8,7 @@ class formCambiarContrasena extends vista
     $this->cabeceraShow('Cambiar contraseña');
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
-    <h1>Cambiar contraseña</h1>
+    <h1 style="margin-bottom: 20px;">Cambiar contraseña</h1>
     <form action="/moduloSeguridad/getCambiarContrasena.php" method="POST">
       <div>
         <label for="contrasenaActual">Contraseña actual:</label>
