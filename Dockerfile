@@ -25,5 +25,8 @@ COPY ./src /var/www/html
 # Install PHPMailer using Composer
 RUN composer require phpmailer/phpmailer
 
+# Install TCPDF using Composer
+RUN composer require tecnickcom/tcpdf
+
 # Expose port 80
 EXPOSE 80

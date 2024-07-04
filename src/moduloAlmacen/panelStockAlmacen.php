@@ -51,6 +51,10 @@ class panelStockAlmacen extends vista
           <?php endif; ?>
         </tbody>
       </table>
+
+      <form style="margin-top: 20px;" class="form-buscar" target="_blank" action="/moduloAlmacen/getStockAlmacen.php" method="POST">
+        <input type="submit" value="Generar reporte" name="btnGenerarReporte" id="btnGenerarReporte">
+      </form>
     </div>
 <?php
     $this->piePaginaShow();

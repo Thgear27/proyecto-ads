@@ -104,6 +104,7 @@ if (validarAccion($_GET['accion'])) {
 
 $btnBuscar = $_POST['btnBuscar'];
 $btnEditarProducto = $_POST['btnEditarProducto'];
+$btnGenerarReporte = $_POST['btnGenerarReporte'];
 
 function redirigirIndexStockAlmacen($txtNombreProducto)
 {
@@ -139,6 +140,10 @@ if (validarBoton($btnBuscar)) {
     $viewMessageSistemaObject = new viewMessageSistema();
     $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', $mensajeError);
   }
+
+} elseif(validarBoton($btnGenerarReporte)) {
+  $controlStockAlmacenObject = new controlStockAlmacen();
+  $controlStockAlmacenObject->generarReporte();
 } else {
   $panelStockAlmacenObject = new panelStockAlmacen();
   $panelStockAlmacenObject->panelStockAlmacenShow();
