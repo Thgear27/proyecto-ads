@@ -67,40 +67,54 @@ function validarAccion($accion)
   return isset($accion);
 }
 
-if (validarAccion($_GET['action'])) {
-  if (!isset($_GET['id'])) {
+function validarId($id)
+{
+  return isset($id);
+}
+
+function accionEsEliminar($accion){
+  return $accion === "eliminar";
+}
+
+if (validarAccion($_GET['accion'])) {
+  if (!validarId($_GET['id'])) {
     $panelStockAlmacenObject = new panelStockAlmacen();
     $panelStockAlmacenObject->panelStockAlmacenShow();
 
     $viewMessageSistemaObject = new viewMessageSistema();
     $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'No se ha enviado el id del producto a eliminar', '/moduloAlmacen/indexStockAlmacen.php');
+  } else {
+    $id = htmlspecialchars($_GET['id']);
+
+    $accion = htmlspecialchars($_GET['accion']);
+
+    if (accionEsEliminar($accion)) {
+      $controlStockAlmacenObject = new controlStockAlmacen();
+      $controlStockAlmacenObject->eliminarProductoAlmacen($id);
+    }else{
+      $panelStockAlmacenObject = new panelStockAlmacen();
+      $panelStockAlmacenObject->panelStockAlmacenShow();
+
+      $viewMessageSistemaObject = new viewMessageSistema();
+      $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'La accion no se reconoce', '/moduloAlmacen/indexStockAlmacen.php');
+    }
+    exit();
   }
-
-  $id = htmlspecialchars($_GET['id']);
-
-  $action = htmlspecialchars($_GET['action']);
-
-  if ($action === "eliminar") {
-    $controlStockAlmacenObject = new controlStockAlmacen();
-    $controlStockAlmacenObject->eliminarProductoAlmacen($id);
-
-    $panelStockAlmacenObject = new panelStockAlmacen();
-    $panelStockAlmacenObject->panelStockAlmacenShow();
-
-    $viewMessageSistemaObject = new viewMessageSistema();
-    $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Eliminación exitosa', 'Se ha eliminado el producto con correctamente', '/moduloAlmacen/indexStockAlmacen.php');
-  }
-  exit();
 }
 
 $btnBuscar = $_POST['btnBuscar'];
 $btnEditarProducto = $_POST['btnEditarProducto'];
 
+function redirigirIndexStockAlmacen($txtNombreProducto)
+{
+  header('Location: /moduloAlmacen/indexStockAlmacen.php?nombre=' . $txtNombreProducto);
+}
+
 if (validarBoton($btnBuscar)) {
   $txtNombreProducto = htmlspecialchars($_POST['txtNombreProducto'], ENT_QUOTES, 'UTF-8');
 
   if (validarNombreProducto($txtNombreProducto)) {
-    header('Location: /moduloAlmacen/indexStockAlmacen.php?nombre=' . $txtNombreProducto);
+    redirigirIndexStockAlmacen($txtNombreProducto);
   } else {
     $panelStockAlmacenObject = new panelStockAlmacen();
     $panelStockAlmacenObject->panelStockAlmacenShow();

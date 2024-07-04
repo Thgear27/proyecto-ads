@@ -1,9 +1,11 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/EproductoAlmacen.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/shared/viewMessageSistema.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/panelStockAlmacen.php');
 
 class controlStockAlmacen
 {
+
   function actualizarProducto($txtProducto, $txtDescripcion, $txtCantidad, $txtPrecio, $txtId)
   {
     session_start();
@@ -39,6 +41,12 @@ class controlStockAlmacen
   {
     $EproductoAlmacenObject = new EproductoAlmacen();
     $EproductoAlmacenObject->eliminarProductoAlmacen($idProductoAlmacen);
+
+    $panelStockAlmacenObject = new panelStockAlmacen();
+    $panelStockAlmacenObject->panelStockAlmacenShow();
+
+    $viewMessageSistemaObject = new viewMessageSistema();
+    $viewMessageSistemaObject->viewMessageSistemaShow('success', 'Eliminación exitosa', 'Se ha eliminado el producto con correctamente', '/moduloAlmacen/indexStockAlmacen.php');
   }
 
   function obtenerProductosAlmacen($nombre = null)
