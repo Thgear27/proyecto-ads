@@ -48,7 +48,6 @@ function validarCampos($txtNombreProducto, $txtDescripcion, $txtCantidad, $txtPr
 }
 
 $btnRegistrarProducto = $_POST['btnRegistrarProducto'];
-$formRegistrarProductoAlmacenObject = new formRegistrarProductoAlmacen();
 
 if (validarBoton($btnRegistrarProducto)) {
   $txtProducto = trim($_POST['nombreProducto']);
@@ -59,12 +58,15 @@ if (validarBoton($btnRegistrarProducto)) {
     $controlRegistrarProductoAlmacenObject = new controlRegistrarProductoAlmacen();
     $controlRegistrarProductoAlmacenObject->buscarProducto($txtProducto, $txtDescripcion, $txtCantidad, $txtPrecio);
   } else {
+    $formRegistrarProductoAlmacenObject = new formRegistrarProductoAlmacen();
     $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
+
     $viewMessageSistemaObject = new viewMessageSistema();
     $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', $mensajeError);
   }
 } else {
-  $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
+    $formRegistrarProductoAlmacenObject = new formRegistrarProductoAlmacen();
+    $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
   $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'No se ha enviado el formulario');
