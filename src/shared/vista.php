@@ -16,7 +16,7 @@ class vista
       <title><?= $texto ?></title>
     </head>
 
-    <body>
+    <body id="body">
     <?php
   }
   protected function piePaginaShow()

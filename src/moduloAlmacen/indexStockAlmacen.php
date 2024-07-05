@@ -16,4 +16,4 @@ if ($rol != "almacen" && $rol != "administrador") {
 }
 
 $panelStockAlmacenObject = new panelStockAlmacen();
-$panelStockAlmacenObject->panelStockAlmacenShow();
+$panelStockAlmacenObject->panelStockAlmacenShow($_GET['nombre']);
