@@ -50,11 +50,11 @@ function validarCamposEditar($txtNombreProducto, $txtDescripcion, $txtCantidad, 
     $nombreCampoErroneo = 'Descripción';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y máximo 90 caracteres';
     return false;
-  } else if (strlen($txtCantidad) < 1) {
+  } else if (empty($txtCantidad) || $txtCantidad < 0) {
     $nombreCampoErroneo = 'Cantidad';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' no debe estar vacio';
     return false;
-  } else if (strlen($txtPrecio) < 1) {
+  } else if (empty($txtPrecio) || $txtPrecio < 0) {
     $nombreCampoErroneo = 'Precio Unitario';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' no debe estar vacio';
     return false;
@@ -72,7 +72,8 @@ function validarId($id)
   return isset($id);
 }
 
-function accionEsEliminar($accion){
+function accionEsEliminar($accion)
+{
   return $accion === "eliminar";
 }
 
@@ -91,7 +92,7 @@ if (validarAccion($_GET['accion'])) {
     if (accionEsEliminar($accion)) {
       $controlStockAlmacenObject = new controlStockAlmacen();
       $controlStockAlmacenObject->eliminarProductoAlmacen($id);
-    }else{
+    } else {
       $panelStockAlmacenObject = new panelStockAlmacen();
       $panelStockAlmacenObject->panelStockAlmacenShow();
 
@@ -140,8 +141,7 @@ if (validarBoton($btnBuscar)) {
     $viewMessageSistemaObject = new viewMessageSistema();
     $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', $mensajeError);
   }
-
-} elseif(validarBoton($btnGenerarReporte)) {
+} elseif (validarBoton($btnGenerarReporte)) {
   $controlStockAlmacenObject = new controlStockAlmacen();
   $controlStockAlmacenObject->generarReporte();
 } else {

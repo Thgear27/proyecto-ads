@@ -13,13 +13,14 @@ function validarBoton($boton)
   return isset($boton);
 }
 
-function validarCamposLogin($txtEmail, $txtContrasena){
+function validarCamposLogin($txtEmail, $txtContrasena)
+{
   global $nombreCampoErroneo, $mensajeError;
-  if(!filter_var($txtEmail, FILTER_VALIDATE_EMAIL)){
+  if (!filter_var($txtEmail, FILTER_VALIDATE_EMAIL)) {
     $nombreCampoErroneo = 'Email';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' debe tener un formato de email válido';
     return false;
-  }else if(strlen($txtContrasena) < 4){
+  } else if (strlen($txtContrasena) < 4 || empty($txtContrasena)) {
     $nombreCampoErroneo = 'Contraseña';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
     return false;
@@ -41,7 +42,7 @@ if (validarBoton($btnSubmit)) {
     } else {
       $formAutenticarUsuario = new formAutenticarUsuario();
       $formAutenticarUsuario->formAutenticarUsuarioShow();
-      
+
       $viewMessageSistemaObject = new viewMessageSistema();
       $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Campo inválido', $mensajeError);
     }
