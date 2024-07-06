@@ -28,19 +28,19 @@ function validarCampos($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $t
 {
   global $nombreCampoErroneo, $mensajeError;
 
-  if (empty($txtNombre) || strlen($txtNombre) < 4) {
+  if (empty($txtNombre) || strlen($txtNombre) < 4 || strlen($txtNombre) > 50) {
     $nombreCampoErroneo = 'Nombre';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
+    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 50 caracteres';
     return false;
-  } elseif (empty($txtApePaterno) || strlen($txtApePaterno) < 4) {
+  } elseif (empty($txtApePaterno) || strlen($txtApePaterno) < 4 || strlen($txtApePaterno) > 50) {
     $nombreCampoErroneo = 'Apellido Paterno';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
+    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 50 caracteres';
     return false;
-  } elseif (empty($txtApeMaterno) || strlen($txtApeMaterno) < 4) {
+  } elseif (empty($txtApeMaterno) || strlen($txtApeMaterno) < 4 || strlen($txtApeMaterno) > 50) {
     $nombreCampoErroneo = 'Apellido Materno';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
+    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 50 caracteres';
     return false;
-  } elseif (!filter_var($txtEmail, FILTER_VALIDATE_EMAIL)) {
+  } elseif (!filter_var($txtEmail, FILTER_VALIDATE_EMAIL) || strlen($txtEmail) > 100) {
     $nombreCampoErroneo = 'Email';
     $mensajeError = 'El email no es válido';
     return false;
@@ -48,9 +48,9 @@ function validarCampos($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $t
     $nombreCampoErroneo = 'Contraseña';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
     return false;
-  } elseif (empty($txtTelefono) || strlen($txtTelefono) < 4) {
+  } elseif (empty($txtTelefono) || strlen($txtTelefono) < 4 || strlen($txtTelefono) > 15) {
     $nombreCampoErroneo = 'Telefono';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
+    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 15 caracteres';
     return false;
   } elseif (empty($id_rol)) {
     $nombreCampoErroneo = 'Rol';

@@ -34,10 +34,10 @@ function validarContrasenas($txtContrasenaNueva, $txtContrasenaNuevaConfirmacion
 {
   global $mensajeError;
 
-  if (strlen($txtContrasenaNueva) < 4) {
+  if (strlen($txtContrasenaNueva) < 4 || empty($txtContrasenaNueva)) {
     $mensajeError = 'El campo contraseña nueva debe tener al menos 4 caracteres';
     return false;
-  } else if (strlen($txtContrasenaNuevaConfirmacion) < 4) {
+  } else if (strlen($txtContrasenaNuevaConfirmacion) < 4 || empty($txtContrasenaNuevaConfirmacion)) {
     $mensajeError = 'El campo de la confirmación de la contraseña nueva debe tener al menos 4 caracteres';
     return false;
   }

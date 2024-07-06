@@ -27,21 +27,21 @@ function validarBoton($btnRegistrarProducto)
 function validarCampos($txtNombreProducto, $txtDescripcion, $txtCantidad, $txtPrecio)
 {
   global $nombreCampoErroneo, $mensajeError;
-  if (strlen($txtNombreProducto) < 4 || strlen($txtNombreProducto) > 60) {
+  if (empty($txtNombreProducto) || strlen($txtNombreProducto) < 4 || strlen($txtNombreProducto) > 60) {
     $nombreCampoErroneo = 'Nombre Producto';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y máximo 60 caracteres';
     return false;
-  } else if (strlen($txtDescripcion) < 4 || strlen($txtDescripcion) > 90) {
+  } else if (empty($txtDescripcion) || strlen($txtDescripcion) < 4 || strlen($txtDescripcion) > 90) {
     $nombreCampoErroneo = 'Descripción';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y máximo 90 caracteres';
     return false;
-  } else if (strlen($txtCantidad) < 1) {
+  } else if (empty($txtCantidad) || $txtCantidad < 0) {
     $nombreCampoErroneo = 'Cantidad';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' no debe estar vacio';
+    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' es invalido';
     return false;
-  } else if (strlen($txtPrecio) < 1) {
+  } else if (empty($txtPrecio) || $txtPrecio < 0) {
     $nombreCampoErroneo = 'Precio Unitario';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' no debe estar vacio';
+    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' es invalido';
     return false;
   }
   return true;
@@ -65,8 +65,8 @@ if (validarBoton($btnRegistrarProducto)) {
     $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', $mensajeError);
   }
 } else {
-    $formRegistrarProductoAlmacenObject = new formRegistrarProductoAlmacen();
-    $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
+  $formRegistrarProductoAlmacenObject = new formRegistrarProductoAlmacen();
+  $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
   $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'No se ha enviado el formulario');

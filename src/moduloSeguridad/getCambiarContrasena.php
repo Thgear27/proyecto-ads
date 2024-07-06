@@ -21,15 +21,15 @@ function validarBoton($btnCambiarContrasena)
 function validarCampos($txtContrasenaNueva, $txtContrasenaNuevaConfirmacion, $txtContrasenaActual)
 {
   global $nombreCampoErroneo, $mensajeError;
-  if (strlen($txtContrasenaNueva) < 4) {
+  if (strlen($txtContrasenaNueva) < 4 || empty($txtContrasenaNueva)) {
     $nombreCampoErroneo = 'Contraseña Nueva';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
     return false;
-  } else if (strlen($txtContrasenaNuevaConfirmacion) < 4) {
+  } else if (strlen($txtContrasenaNuevaConfirmacion) < 4 || empty($txtContrasenaNuevaConfirmacion)) {
     $nombreCampoErroneo = 'Contraseña Nueva Confirmación';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
     return false;
-  } else if (strlen($txtContrasenaActual) < 4) {
+  } else if (strlen($txtContrasenaActual) < 4 || empty($txtContrasenaActual)) {
     $nombreCampoErroneo = 'Contraseña Actual';
     $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
     return false;
