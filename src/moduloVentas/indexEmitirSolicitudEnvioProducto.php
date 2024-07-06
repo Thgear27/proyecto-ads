@@ -16,4 +16,4 @@ if ($rol != "tienda") {
 }
 
 $panelEmitirSolicitudEnvioProductoObject = new panelEmitirSolicitudEnvioProducto();
-$panelEmitirSolicitudEnvioProductoObject->panelEmitirSolicitudEnvioProductoShow();
+$panelEmitirSolicitudEnvioProductoObject->panelEmitirSolicitudEnvioProductoShow($_GET['nombre']);

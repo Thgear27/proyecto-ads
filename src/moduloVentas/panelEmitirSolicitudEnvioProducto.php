@@ -4,17 +4,17 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/controlStockAlmacen.php
 
 class panelEmitirSolicitudEnvioProducto extends vista
 {
-  function panelEmitirSolicitudEnvioProductoShow()
+  function panelEmitirSolicitudEnvioProductoShow($nombre = null)
   {
     $controlStockAlmacenObject = new controlStockAlmacen();
-    $productos = $controlStockAlmacenObject->obtenerProductosAlmacen();
+    $productos = $controlStockAlmacenObject->obtenerProductosAlmacen($nombre);
 
     $this->cabeceraShow("Panel del stock almacen", ["/assets/emitirSolicitudEnvioProducto.js"]);
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
     <div class="container">
       <h1 style="margin-bottom: 20px;">Productos de Almacén</h1>
-      <form class="form-buscar" action="/moduloAlmacen/getStockAlmacen.php" method="POST">
+      <form class="form-buscar" action="/moduloVentas/getEmitirSolicitudEnvioProducto.php" method="POST">
         <input type="text" class="input-buscar" id="inputBuscar" name="txtNombreProducto" placeholder="Buscar productos por nombre...">
         <input type="submit" class="submit-buscar" value="Buscar" name="btnBuscar" id="btnBuscar">
       </form>
@@ -79,7 +79,7 @@ class panelEmitirSolicitudEnvioProducto extends vista
 
       </div>
 
-      <button data-button-emitir-solicitud name="btnGenerarSolicitudEnvio" id="btnGenerarSolicitudEnvio">Generar Solicitud de envío</button>
+      <button style="margin-top: 20px;" data-button-emitir-solicitud name="btnGenerarSolicitudEnvio" id="btnGenerarSolicitudEnvio">Generar Solicitud de envío</button>
     </div>
 <?php
     $this->piePaginaShow();

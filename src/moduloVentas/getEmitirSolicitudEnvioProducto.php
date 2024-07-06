@@ -37,6 +37,7 @@ function validarProductos($productos)
 }
 
 $btnGenerarSolicitudEnvio = $_POST['btnGenerarSolicitudEnvio'];
+$btnBuscar = $_POST['btnBuscar'];
 
 if (validarBoton($btnGenerarSolicitudEnvio)) {
   $productos = $_POST['productos'];
@@ -52,10 +53,12 @@ if (validarBoton($btnGenerarSolicitudEnvio)) {
     $viewMessageSistemaObject = new viewMessageSistema();
     $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', $mensajeError, '/moduloVentas/indexEmitirSolicitudEnvioProducto.php');
   }
+} elseif (validarBoton($btnBuscar)) {
+  header('Location: /moduloVentas/indexEmitirSolicitudEnvioProducto.php?nombre=' . $_POST['txtNombreProducto']);
 } else {
   $panelEmitirSolicitudEnvioProductoObject = new panelEmitirSolicitudEnvioProducto();
   $panelEmitirSolicitudEnvioProductoObject->panelEmitirSolicitudEnvioProductoShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'La accion no se reconoce', '/moduloVentas/indexEmitirSolicitudEnvioProducto.php');
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'El formulario no ha sido enviado', '/moduloVentas/indexEmitirSolicitudEnvioProducto.php');
 }
