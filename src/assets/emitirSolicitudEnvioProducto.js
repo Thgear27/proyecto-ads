@@ -13,10 +13,6 @@ function getProductoInfo(id) {
   };
 }
 
-function eliminarProducto() {
-  console.log("Eliminar");
-}
-
 function actualizarTablaProductosSolicitados() {
   let productos = JSON.parse(localStorage.getItem("productos_solicitados")) || [];
   let tbody = document.querySelector("[data-tbody-solicitar]");
@@ -67,7 +63,7 @@ function anadirProducto(id) {
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
-// Función evento para añadir un producto al los productos solicitados
+// Función evento para eliminar un producto de los productos solicitados
 function eliminarProducto(id) {
   return () => {
     let productos = JSON.parse(localStorage.getItem("productos_solicitados")) || [];
@@ -95,14 +91,20 @@ function actualizarAnadirBotones() {
 
 function modificarCantidadProductoSolicitado(id) {
   return () => {
-    console.log("AAA");
     let productos = JSON.parse(localStorage.getItem("productos_solicitados")) || [];
     let producto = productos.find((producto) => producto.id === id);
-
-    console.log(id, producto);
+    let cantidadProductoAlmacen = getProductoInfo(id).cantidad;
 
     if (producto) {
-      producto.cantidad = document.querySelector(`[data-input-cantidad="${id}"]`).value;
+      let cantidadModificada = document.querySelector(`[data-input-cantidad="${id}"]`).value;
+      if (cantidadModificada < 1) {
+        producto.cantidad = 1;
+      } else if (cantidadModificada > cantidadProductoAlmacen) {
+        producto.cantidad = cantidadProductoAlmacen;
+      } else {
+        producto.cantidad =cantidadModificada 
+      }
+      document.querySelector(`[data-input-cantidad="${id}"]`).value = producto.cantidad;
     }
 
     localStorage.setItem("productos_solicitados", JSON.stringify(productos));
@@ -121,24 +123,32 @@ function actualizarInputsCantidad() {
 
 function generarSolicitud(event) {
   event.preventDefault();
-  console.log("HOLA");
+
   let productos = JSON.parse(localStorage.getItem("productos_solicitados")) || [];
 
-  const formData = new FormData();
+  // Crear un formulario dinámicamente
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "/moduloVentas/getEmitirSolicitudEnvioProducto.php";
 
-  formData.append("productos", JSON.stringify(productos));
+  // Agregar los productos como un campo oculto
+  const productosField = document.createElement("input");
+  productosField.type = "hidden";
+  productosField.name = "productos";
+  productosField.value = JSON.stringify(productos);
+  form.appendChild(productosField);
 
-  fetch("/moduloVentas/laruta.php", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  // Agregar un campo de validación para verificar el botón
+  const validacionBotonField = document.createElement("input");
+  validacionBotonField.type = "hidden";
+  validacionBotonField.name = "btnGenerarSolicitudEnvio";
+  validacionBotonField.value = "miBoton";
+  form.appendChild(validacionBotonField);
+
+  // Agregar el formulario al cuerpo del documento y enviarlo
+  document.body.appendChild(form);
+  localStorage.removeItem("productos_solicitados");
+  form.submit();
 }
 
 function actualizarBotonEmitirSolicitud() {
