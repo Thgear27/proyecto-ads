@@ -38,6 +38,7 @@ class panelPrincipalSistema extends vista
           <p>Rol: <?= $rol ?></p>
         </div>
         <nav>
+          <a class="nav-link" href="/moduloVentas/indexEmitirSolicitudEnvioProducto.php">Solicitar envío</a>
           <a class="nav-link" href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
           <a class="nav-link" href="/moduloSeguridad/cerrarSesion.php">Cerrar Sesión</a>
         </nav>

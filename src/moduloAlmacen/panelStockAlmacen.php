@@ -18,40 +18,41 @@ class panelStockAlmacen extends vista
         <input type="text" class="input-buscar" id="inputBuscar" name="txtNombreProducto" placeholder="Buscar productos por nombre...">
         <input type="submit" class="submit-buscar" value="Buscar" name="btnBuscar" id="btnBuscar">
       </form>
-      <table id="productsTable">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Cantidad Total</th>
-            <th>Precio</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php if ($productos !== null) : ?>
-            <?php foreach ($productos as $producto) : ?>
-              <tr>
-                <td><?= htmlspecialchars($producto['id_producto_almacen']) ?></td>
-                <td><?= htmlspecialchars($producto['nombre_producto']) ?></td>
-                <td><?= htmlspecialchars($producto['descripcion']) ?></td>
-                <td><?= htmlspecialchars($producto['cantidad']) ?></td>
-                <td><?= htmlspecialchars($producto['precio_unitario']) ?></td>
-                <td>
-                  <a href="/moduloAlmacen/indexEditarProductoAlmacen.php?id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>&nombre=<?= htmlspecialchars($producto['nombre_producto']) ?>">Editar</a>
-                  <a href="/moduloAlmacen/getStockAlmacen.php?accion=eliminar&id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>">Eliminar</a>
-                </td>
-              </tr>
-            <?php endforeach; ?>
-          <?php else : ?>
+      <div class="scrollable">
+        <table id="productsTable">
+          <thead>
             <tr>
-              <td colspan="6">No se encontraron productos.</td>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Cantidad Total</th>
+              <th>Precio</th>
+              <th>Acción</th>
             </tr>
-          <?php endif; ?>
-        </tbody>
-      </table>
-
+          </thead>
+          <tbody>
+            <?php if ($productos !== null) : ?>
+              <?php foreach ($productos as $producto) : ?>
+                <tr>
+                  <td><?= htmlspecialchars($producto['id_producto_almacen']) ?></td>
+                  <td><?= htmlspecialchars($producto['nombre_producto']) ?></td>
+                  <td><?= htmlspecialchars($producto['descripcion']) ?></td>
+                  <td><?= htmlspecialchars($producto['cantidad']) ?></td>
+                  <td><?= htmlspecialchars($producto['precio_unitario']) ?></td>
+                  <td>
+                    <a href="/moduloAlmacen/indexEditarProductoAlmacen.php?id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>&nombre=<?= htmlspecialchars($producto['nombre_producto']) ?>">Editar</a>
+                    <a href="/moduloAlmacen/getStockAlmacen.php?accion=eliminar&id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>">Eliminar</a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else : ?>
+              <tr>
+                <td colspan="6">No se encontraron productos.</td>
+              </tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
+      </div>
       <form style="margin-top: 20px;" class="form-buscar" target="_blank" action="/moduloAlmacen/getStockAlmacen.php" method="POST">
         <input type="submit" value="Generar reporte" name="btnGenerarReporte" id="btnGenerarReporte">
       </form>

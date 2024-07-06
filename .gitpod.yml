@@ -1,5 +1,6 @@
 tasks:
-  - before: docker compose up
+  - before: docker compose up --build
+  - before: docker compose run php composer update
 
 vscode:
   extensions:
