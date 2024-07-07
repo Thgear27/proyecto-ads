@@ -12,6 +12,12 @@ class controlEmitirInformeProductosEnviados
     return $solicitudes;
   }
 
+  function obtenerSolicitud($idSolicitud) {
+    $solicitudEnvioObject = new EsolicitudEnvio();
+    $solicitud = $solicitudEnvioObject->obtenerSolicitud($idSolicitud);
+    return $solicitud;
+  }
+
   function obtenerProductosSolicitud($idSolicitud)
   {
     $solicitudEnvioObject = new EsolicitudEnvio();

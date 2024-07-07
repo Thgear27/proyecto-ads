@@ -8,6 +8,7 @@ class panelDetalleSolicitud extends vista
   {
     $controlEmitirInformeProductosEnviadosObject = new controlEmitirInformeProductosEnviados();
     $productos = $controlEmitirInformeProductosEnviadosObject->obtenerProductosSolicitud($IdSolicitud);
+    $solicitud = $controlEmitirInformeProductosEnviadosObject->obtenerSolicitud($IdSolicitud);
 
     $this->cabeceraShow("Detalle de solicitud");
 
@@ -52,7 +53,10 @@ class panelDetalleSolicitud extends vista
           </table>
         </div>
 
-        <input type="submit" style="margin-top: 20px;" name="btnEnviarProductos" id="btnEnviarProductos" value="Enviar">
+        <?php if ($solicitud['estado'] == 'pendiente') : ?>
+          <input type="submit" style="margin-top: 20px;" name="btnEnviarProductos" id="btnEnviarProductos" value="Enviar">
+        <?php endif; ?>
+
       </form>
 
     </div>
