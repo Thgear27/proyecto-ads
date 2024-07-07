@@ -34,10 +34,10 @@ class panelEmitirInformeProductosEnviados extends vista
 
               <?php foreach ($solicitudes as $solicitud) : ?>
                 <tr>
-                  <td><?php echo $solicitud['id_solicitud']; ?></td>
-                  <td><?php echo $solicitud['fecha_solicitud']; ?></td>
-                  <td><?php echo $solicitud['cantidad_total']; ?></td>
-                  <td><?php echo $solicitud['estado']; ?></td>
+                  <td><?= $solicitud['id_solicitud']; ?></td>
+                  <td><?= $solicitud['fecha_solicitud']; ?></td>
+                  <td><?= $solicitud['cantidad_total']; ?></td>
+                  <td class="estado <?= $solicitud['estado']; ?>"><?= $solicitud['estado']; ?></td>
                   <td>
                     <a href="/moduloAlmacen/indexPanelDetalleSolicitud.php?id=<?php echo $solicitud['id_solicitud']; ?>">Ver detalles</a>
                   </td>

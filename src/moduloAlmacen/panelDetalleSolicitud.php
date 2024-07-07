@@ -18,7 +18,7 @@ class panelDetalleSolicitud extends vista
     <div class="container">
       <h1 style="margin-bottom: 20px;">Productos de la solicitud</h1>
       <form action="/moduloAlmacen/getEmitirInformeProductosEnviados.php" class="form-solicitud" method="POST">
-
+        <input type="number" name="id_solicitud" id="id_solicitud" value="<?= $IdSolicitud ?>" hidden>
         <div class="scrollable detalle-solicitud">
           <table id="productsTable">
             <thead>
@@ -27,7 +27,6 @@ class panelDetalleSolicitud extends vista
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Cantidad Solcitada</th>
-                <th>Cantidad a Enviar</th>
                 <th>Precio unitario</th>
               </tr>
             </thead>
@@ -40,21 +39,20 @@ class panelDetalleSolicitud extends vista
                     <td><?= $producto['nombre_producto']; ?></td>
                     <td><?= $producto['descripcion']; ?></td>
                     <td><?= $producto['cantidad_solicitada']; ?></td>
-                    <td><input type="number" value="<?= $producto['cantidad_solicitada']; ?>"></td>
                     <td><?= $producto['precio_unitario']; ?></td>
                   </tr>
                 <?php endforeach; ?>
 
               <?php else : ?>
                 <tr>
-                  <td colspan="6">No se encontraron productos.</td>
+                  <td colspan="4">No se encontraron productos.</td>
                 </tr>
               <?php endif; ?>
             </tbody>
           </table>
         </div>
 
-        <button type="submit" style="margin-top: 20px;" name="btnEnviarProductos" id="btnEnviarProductos">Enviar</button>
+        <input type="submit" style="margin-top: 20px;" name="btnEnviarProductos" id="btnEnviarProductos" value="Enviar">
       </form>
 
     </div>
