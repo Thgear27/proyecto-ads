@@ -14,8 +14,9 @@ body {
   margin: 0;
 }
 
-html, #body {
-  min-height: 100% !important; 
+html,
+#body {
+  min-height: 100% !important;
 }
 
 html {
@@ -175,6 +176,18 @@ tbody td {
 
 .actions a:hover {
   text-decoration: underline;
+}
+
+.form-solicitud {
+  background-color: transparent;
+  padding: 0;
+  box-shadow: none;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  gap: 10px;
 }
 
 .form-buscar {

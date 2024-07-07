@@ -107,6 +107,79 @@ ALTER TABLE `Detalle_solicitud_envio`
 
 class EsolicitudEnvio extends conexion
 {
+  public function obtenerProductosSolicitud($idSolicitud)
+  {
+
+    $this->conectar();
+    $sql = "SELECT * FROM Detalle_solicitud_envio WHERE id_solicitud = $idSolicitud";
+    $respuesta = $this->conn->query($sql);
+
+    if ($respuesta->num_rows == 0) {
+      $this->desconectar();
+      return null;
+    }
+
+    $productos = array();
+
+    while ($fila = $respuesta->fetch_assoc()) {
+      $id_producto_almacen = $fila['id_producto_almacen'];
+      $cantidad = $fila['cantidad'];
+
+      $sql = "SELECT * FROM Producto_almacen WHERE id_producto_almacen = $id_producto_almacen";
+      $respuesta_producto = $this->conn->query($sql);
+
+      if ($respuesta_producto->num_rows == 0) {
+        $this->desconectar();
+        return null;
+      }
+
+      $producto = $respuesta_producto->fetch_assoc();
+      $producto['cantidad_solicitada'] = $cantidad;
+      $productos[] = $producto;
+    }
+
+    $this->desconectar();
+
+    return $productos;
+  }
+
+  public function obtenerSolicitudes()
+  {
+    $this->conectar();
+    $sql = "SELECT * FROM Solicitud_envio";
+    $respuesta = $this->conn->query($sql);
+
+    if ($respuesta->num_rows == 0) {
+      $this->desconectar();
+      return null;
+    }
+
+    $solicitudes = array();
+    while ($fila = $respuesta->fetch_assoc()) {
+      $solicitudes[] = $fila;
+    }
+
+    // Obtener la cantidad total productos que se van a ralizar en este envio
+
+    foreach ($solicitudes as $key => $solicitud) {
+      $id_solicitud = $solicitud['id_solicitud'];
+      $sql = "SELECT SUM(cantidad) AS cantidad_total FROM Detalle_solicitud_envio WHERE id_solicitud = $id_solicitud";
+      $respuesta = $this->conn->query($sql);
+
+      if ($respuesta->num_rows == 0) {
+        $this->desconectar();
+        return null;
+      }
+
+      $fila = $respuesta->fetch_assoc();
+      $solicitudes[$key]['cantidad_total'] = $fila['cantidad_total'];
+    }
+
+
+    $this->desconectar();
+    return $solicitudes;
+  }
+
   public function generarSolicitudEnvioProductos($productos, $email)
   {
     $this->conectar();
