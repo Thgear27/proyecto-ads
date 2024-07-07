@@ -14,8 +14,9 @@ body {
   margin: 0;
 }
 
-html, #body {
-  min-height: 100% !important; 
+html,
+#body {
+  min-height: 100% !important;
 }
 
 html {
@@ -177,6 +178,18 @@ tbody td {
   text-decoration: underline;
 }
 
+.form-solicitud {
+  background-color: transparent;
+  padding: 0;
+  box-shadow: none;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  gap: 10px;
+}
+
 .form-buscar {
   background-color: transparent;
   padding: 0;
@@ -289,4 +302,29 @@ button.link {
 button.link:hover {
   color: #0056b3; /* Color del texto al pasar el ratón */
   text-decoration: none; /* Sin subrayado al pasar el ratón */
+}
+
+.estado {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.estado.enviado {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.estado.recibido {
+  background-color: #cce5ff;
+  color: #004085;
+  border: 1px solid #b8daff;
+}
+
+.estado.pendiente {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
 }

@@ -21,6 +21,7 @@ class panelPrincipalSistema extends vista
           <p>Rol: <?= $rol ?></p>
         </div>
         <nav>
+          <a class="nav-link" href="/moduloAlmacen/indexEmitirInformeProductoEnviados.php">Solicitudes de envío</a>
           <a class="nav-link" href="/moduloAlmacen/indexStockAlmacen.php">Stock Almacen</a>
           <a class="nav-link" href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
           <a class="nav-link" href="/moduloSeguridad/indexCambiarContrasena.php">Cambiar Contraseña</a>
@@ -54,6 +55,7 @@ class panelPrincipalSistema extends vista
           <p>Rol: <?= $rol ?></p>
         </div>
         <nav>
+          <a class="nav-link" href="/moduloAlmacen/indexEmitirInformeProductoEnviados.php">Solicitudes de envío</a>
           <a class="nav-link" href="/moduloSeguridad/indexRegistrarUsuario.php">Registrar Nuevo Usuario</a>
           <a class="nav-link" href="/moduloAlmacen/indexStockAlmacen.php">Stock Almacen</a>
           <a class="nav-link" href="/moduloAlmacen/indexRegistrarProductoAlmacen.php">Registrar Producto</a>
