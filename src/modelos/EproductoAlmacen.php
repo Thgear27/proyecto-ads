@@ -31,6 +31,7 @@ class EproductoAlmacen extends conexion
     }
 
     $this->desconectar();
+    return true;
   }
 
   function actualizarProducto($txtProducto, $txtDescripcion, $txtCantidad, $txtPrecio, $txtId)

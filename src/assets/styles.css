@@ -381,3 +381,13 @@ button.link:hover {
 .label-button.create:hover {
   background-color: #218838; /* Color de fondo al pasar el ratón */
 }
+
+button[disabled] {
+  background-color: #ccc; /* Color de fondo para botón deshabilitado */
+  color: #666; /* Color del texto */
+  cursor: not-allowed; /* Cursor de no permitido */
+}
+
+button[disabled]:hover {
+  background-color: #ccc; /* Color de fondo al pasar el ratón */
+}

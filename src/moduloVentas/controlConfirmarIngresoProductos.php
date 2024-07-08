@@ -2,6 +2,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/shared/viewMessageSistema.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/EsolicitudEnvio.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/EproductoAlmacen.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/EproductoTienda.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloVentas/panelConfirmarIngresoProductos.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 

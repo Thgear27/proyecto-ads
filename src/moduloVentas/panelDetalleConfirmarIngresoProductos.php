@@ -38,7 +38,7 @@ class panelDetalleConfirmarIngresoProductos extends vista
                     <td><?= $producto['nombre_producto']; ?></td>
                     <td><?= $producto['descripcion']; ?></td>
                     <td><?= $producto['cantidad_solicitada']; ?></td>
-                    <td><?= $producto['precio_unitario']; ?></td>
+                    <td><?= $producto['precio_unitario']; ?> S/.</td>
                   </tr>
                 <?php endforeach; ?>
 
