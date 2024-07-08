@@ -21,16 +21,16 @@ class controlEmitirInformeProductosEnviados
   function obtenerProductosSolicitud($idSolicitud)
   {
     $solicitudEnvioObject = new EsolicitudEnvio();
-    $detalleSolicitud = $solicitudEnvioObject->obtenerProductosSolicitud($idSolicitud);
-    return $detalleSolicitud;
+    $productos = $solicitudEnvioObject->obtenerProductosSolicitud($idSolicitud);
+    return $productos;
   }
 
   function cambiarEstadoSolicitud($idSolicitud, $estado)
   {
     $solicitudEnvioObject = new EsolicitudEnvio();
-    $resultado = $solicitudEnvioObject->cambiarEstadoSolicitud($idSolicitud, $estado);
+    $respuesta = $solicitudEnvioObject->cambiarEstadoSolicitud($idSolicitud, $estado);
 
-    if ($resultado) {
+    if ($respuesta) {
       $panelDetalleSolicitudObject = new panelDetalleSolicitud();
       $panelDetalleSolicitudObject->panelDetalleSolicitudShow($idSolicitud);
 

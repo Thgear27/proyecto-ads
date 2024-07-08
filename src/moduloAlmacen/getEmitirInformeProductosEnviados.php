@@ -17,9 +17,9 @@ if ($rol != "almacen" && $rol != "administrador") {
   exit();
 }
 
-function validarBoton($btnRegistrarProducto)
+function validarBoton($boton)
 {
-  return isset($btnRegistrarProducto);
+  return isset($boton);
 }
 
 

@@ -4,11 +4,11 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/controlEmitirInformePro
 
 class panelDetalleSolicitud extends vista
 {
-  function panelDetalleSolicitudShow($IdSolicitud)
+  function panelDetalleSolicitudShow($idSolicitud)
   {
     $controlEmitirInformeProductosEnviadosObject = new controlEmitirInformeProductosEnviados();
-    $productos = $controlEmitirInformeProductosEnviadosObject->obtenerProductosSolicitud($IdSolicitud);
-    $solicitud = $controlEmitirInformeProductosEnviadosObject->obtenerSolicitud($IdSolicitud);
+    $productos = $controlEmitirInformeProductosEnviadosObject->obtenerProductosSolicitud($idSolicitud);
+    $solicitud = $controlEmitirInformeProductosEnviadosObject->obtenerSolicitud($idSolicitud);
 
     $this->cabeceraShow("Detalle de solicitud");
 
@@ -19,7 +19,7 @@ class panelDetalleSolicitud extends vista
     <div class="container">
       <h1 style="margin-bottom: 20px;">Productos de la solicitud</h1>
       <form action="/moduloAlmacen/getEmitirInformeProductosEnviados.php" class="form-solicitud" method="POST">
-        <input type="number" name="id_solicitud" id="id_solicitud" value="<?= $IdSolicitud ?>" hidden>
+        <input type="number" name="id_solicitud" id="id_solicitud" value="<?= $idSolicitud ?>" hidden>
         <div class="scrollable detalle-solicitud">
           <table id="productsTable">
             <thead>
