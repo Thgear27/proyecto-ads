@@ -14,10 +14,6 @@ class panelEmitirInformeProductosEnviados extends vista
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
     <div class="container">
       <h1 style="margin-bottom: 20px;">Solicitudes de envío</h1>
-      <form class="form-buscar" action="/moduloAlmacen/getStockAlmacen.php" method="POST">
-        <input type="text" class="input-buscar" id="inputBuscar" name="txtNombreProducto" placeholder="Buscar productos por nombre...">
-        <input type="submit" class="submit-buscar" value="Buscar" name="btnBuscar" id="btnBuscar">
-      </form>
       <div class="scrollable">
         <table id="productsTable">
           <thead>

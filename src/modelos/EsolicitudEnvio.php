@@ -107,6 +107,22 @@ ALTER TABLE `Detalle_solicitud_envio`
 
 class EsolicitudEnvio extends conexion
 {
+  public function obtenerSolicitud($idSolicitud)
+  {
+    $this->conectar();
+    $sql = "SELECT * FROM Solicitud_envio WHERE id_solicitud = $idSolicitud";
+    $respuesta = $this->conn->query($sql);
+
+    if ($respuesta->num_rows == 0) {
+      $this->desconectar();
+      return null;
+    }
+
+    $solicitud = $respuesta->fetch_assoc();
+    $this->desconectar();
+    return $solicitud;
+  }
+
   public function cambiarEstadoSolicitud($idSolicitud, $estado)
   {
     $this->conectar();
