@@ -107,6 +107,15 @@ ALTER TABLE `Detalle_solicitud_envio`
 
 class EsolicitudEnvio extends conexion
 {
+  public function confirmarIngresoProductos($idSolicitud)
+  {
+    $this->conectar();
+    $sql = "UPDATE Solicitud_envio SET estado = 'recibido' WHERE id_solicitud = $idSolicitud";
+    $respuesta = $this->conn->query($sql);
+    $this->desconectar();
+    return $respuesta === true;
+  }
+
   public function obtenerSolicitud($idSolicitud)
   {
     $this->conectar();
