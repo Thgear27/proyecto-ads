@@ -157,6 +157,9 @@ class controlConfirmarIngresoProductos
       $productoAlmacenObject = new EproductoAlmacen();
       $productoAlmacenObject->reducirStock($idSolicitud);
 
+      $productoTiendaObject = new EproductoTienda();
+      $productoTiendaObject->aumentarStock($idSolicitud);
+
       $panelConfirmarIngresoProductosObject = new panelConfirmarIngresoProductos();
       $panelConfirmarIngresoProductosObject->panelConfirmarIngresoProductosShow();
 
