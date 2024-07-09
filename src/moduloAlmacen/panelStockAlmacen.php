@@ -38,7 +38,7 @@ class panelStockAlmacen extends vista
                   <td><?= htmlspecialchars($producto['nombre_producto']) ?></td>
                   <td><?= htmlspecialchars($producto['descripcion']) ?></td>
                   <td><?= htmlspecialchars($producto['cantidad']) ?></td>
-                  <td><?= htmlspecialchars($producto['precio_unitario']) ?></td>
+                  <td><?= htmlspecialchars($producto['precio_unitario']) ?> S/.</td>
                   <td>
                     <a href="/moduloAlmacen/indexEditarProductoAlmacen.php?id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>&nombre=<?= htmlspecialchars($producto['nombre_producto']) ?>">Editar</a>
                     <a href="/moduloAlmacen/getStockAlmacen.php?accion=eliminar&id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>">Eliminar</a>

@@ -58,97 +58,65 @@ class controlStockAlmacen
         }
         header h1 {
             margin: 0;
-            font-size: 24px;
-            color: #333;
-        }
-        .info {
-            margin-bottom: 20px;
-            color: #555;
-        }
-        .info p {
-            margin: 5px 0;
+            padding: 0;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        table, th, td {
-            border: 1px solid #e0e0e0;
         }
         th, td {
-            padding: 12px;
+            border: 1px solid #000;
+            padding: 8px;
             text-align: left;
         }
         th {
-            background-color: #1976d2;
-            color: white;
-            font-weight: normal;
-        }
-        tr:nth-child(even) {
             background-color: #f2f2f2;
+            font-weight: bold;
+            font-size: 14px;
         }
-        tr:hover {
-            background-color: #e0f7fa;
-        }
-        td {
-            color: #333;
-        }
-        .text-right {
-            text-align: right;
-        }
-        .text-right {
-            text-align: right;
-        }
-        </style>
-        <body>
-
-        <header>
-            <h1>Marjorie Boutique</h1>
-            <h2>Reporte de Stock de Productos</h2>
-        </header>
-
-        <div class="info">
-            <p>Fecha de generación: ' . date('Y-m-d H:i:s') . '</p>
-            <p>Generado por: ' . $nombre . '</p>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>ID Producto</th>
-                    <th>Nombre del Producto</th>
-                    <th>Descripción</th>
-                    <th class="text-right">Cantidad</th>
-                    <th class="text-right">Precio Unitario</th>
-                </tr>
-            </thead>
-            <tbody>';
+      </style>
+      <header>
+          <img src="/assets/img/logo.png" alt="Logo">
+          <h1>Marjorie Boutique</h1>
+          <h2>Reporte de productos</h2>
+      </header>
+      <table>
+          <thead>
+              <tr>
+                  <th><strong>Id</strong></th>
+                  <th><strong>Nombre</strong></th>
+                  <th><strong>Descripción</strong></th>
+                  <th><strong>Cantidad</strong></th>
+                  <th><strong>Precio Unitario</strong></th>
+              </tr>
+          </thead>
+          <tbody>
+              ';
 
     foreach ($productos as $producto) {
       $html .= '
-            <tr>
-              <td>' . $producto['id_producto_almacen'] . '</td>
-              <td>' . $producto['nombre_producto'] . '</td>
-              <td>' . $producto['descripcion'] . '</td>
-              <td class="text-right">' . $producto['cantidad'] . '</td>
-              <td class="text-right">$' . $producto['precio_unitario'] . '</td>
-            </tr>';
+        <tr>
+            <td>' . $producto['id_producto_almacen'] . '</td>
+            <td>' . $producto['nombre_producto'] . '</td>
+            <td>' . $producto['descripcion'] . '</td>
+            <td>' . $producto['cantidad'] . '</td>
+            <td>' . $producto['precio_unitario'] . ' S/.</td>
+        </tr>
+      ';
     }
 
     $html .= '
           </tbody>
-        </table>
-      </body>
-      </html>';
+      </table>
+
+      <div class="info">
+          <p>Fecha de generación: ' . date('Y-m-d H:i:s') . '</p>
+          <p>Generado por: ' . $nombre . '</p>
+      </div>';
 
     $pdf->writeHTML($html, true, false, true, false, '');
 
-    // Cerrar y enviar el documento
-    $pdf->Output('ejemplo.pdf', 'I');
+    $pdf->Output('Reporte_de_Productos_' . date('Y-m-d_H:i:s') . '.pdf', 'I');
   }
 
   function generarReporte()

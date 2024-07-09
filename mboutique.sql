@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jul 06, 2024 at 10:45 PM
+-- Generation Time: Jul 08, 2024 at 05:21 PM
 -- Server version: 5.7.44
 -- PHP Version: 8.2.21
 
@@ -47,20 +47,6 @@ CREATE TABLE `Producto_almacen` (
   `cantidad` int(11) DEFAULT NULL,
   `precio_unitario` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `Producto_almacen`
---
-
-INSERT INTO `Producto_almacen` (`id_producto_almacen`, `nombre_producto`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
-(2, 'Mochila 1', 'mochila', 123, 123),
-(3, 'Joya', '12332', 123, 123),
-(4, 'BalÃ³n', 'BalÃ³n', 123, 123),
-(5, 'Mochila de Dora', 'Mochila de dora con una dora ahÃ­ p', 123, 123),
-(6, 'Otra mochila', '1234', 123, 123),
-(7, 'Pdf2', '123123', 123, 123),
-(8, 'Estoy cansado jefe2', 'asdfasdf', 123, 123),
-(9, 'otro producto', '1233', 123, 123);
 
 -- --------------------------------------------------------
 
@@ -107,7 +93,7 @@ CREATE TABLE `Solicitud_envio` (
   `id_solicitud` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `fecha_solicitud` datetime DEFAULT CURRENT_TIMESTAMP,
-  `estado` enum('pendiente','enviado','recibido') DEFAULT 'pendiente'
+  `estado` enum('pendiente','enviado','recibido','rechazado') DEFAULT 'pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -135,11 +121,7 @@ CREATE TABLE `Usuario` (
 INSERT INTO `Usuario` (`id_usuario`, `nombre`, `ape_paterno`, `ape_materno`, `email`, `contrasena`, `telefono`, `id_rol`, `estado`) VALUES
 (2, 'Juan', 'Perez', 'Gomez', 'almacen@example.com', '$2y$10$tZHhwaVZ5kR7Xa511sFCuOA.mdros2spMbVst3IO4E6h0TCpUPs7i', '1234567890', 1, 'active'),
 (3, 'Pedro', 'Perez', 'Tantalean', 'tienda@example.com', '$2y$10$wacieumSPqyLwRZ62K5.cOj8bzGr79c44U2UQHbmpEMsVuvg6J8a2', '1234567890', 2, 'active'),
-(4, 'Mohamed', 'Luque', 'Garcia', 'admin@example.com', '$2y$10$Yfn.Kby8tTV1o885xl.eiugVN82xN8pku5owMQ3FE59TvNTUq8NQO', '1234567890', 3, 'active'),
-(5, 'Daniel', 'Navarro', 'Tantalean', 'daniel@gmail.com', '$2y$10$AUxUGjoJEYrw/mKt9q.p8./QuS/gR/8OymTeLousIDr99Yj.y7SOS', '994034731', 1, 'active'),
-(6, 'Fernando', 'Perez', 'Flores', 'fer@gmail.com', '$2y$10$jGov1mvB/GGjPijO/NvuH.uy3C/as7T76/9F4bUhqyKRlWBkEnooe', '945612358', 2, 'active'),
-(7, 'Fernando', 'Vegas', 'Villar', 'mgear404@gmail.com', '$2y$10$GTlR.Ns0lYMJHQ7JpAGErONabVDyXFgENL3gC2xHJnd6CmJCEMXbK', '12345678', 3, 'active'),
-(8, 'Fernando', 'Vegas', 'Villar', 'vegasfernando2003@gmail.com', '$2y$10$dRUTmqcue9wtqZkS/gJg/eXkzfNhOCDBMU/QlCwyDDr6ZKtY28DnG', '123456', 2, 'active');
+(4, 'Mohamed', 'Luque', 'Garcia', 'admin@example.com', '$2y$10$Yfn.Kby8tTV1o885xl.eiugVN82xN8pku5owMQ3FE59TvNTUq8NQO', '1234567890', 3, 'active');
 
 --
 -- Indexes for dumped tables
@@ -193,19 +175,19 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT for table `Detalle_solicitud_envio`
 --
 ALTER TABLE `Detalle_solicitud_envio`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `Producto_almacen`
 --
 ALTER TABLE `Producto_almacen`
-  MODIFY `id_producto_almacen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_producto_almacen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `Producto_tienda`
 --
 ALTER TABLE `Producto_tienda`
-  MODIFY `id_producto_tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_producto_tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Rol`
@@ -217,7 +199,7 @@ ALTER TABLE `Rol`
 -- AUTO_INCREMENT for table `Solicitud_envio`
 --
 ALTER TABLE `Solicitud_envio`
-  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `Usuario`

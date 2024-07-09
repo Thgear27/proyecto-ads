@@ -3,6 +3,37 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/conexion.php');
 
 class EproductoAlmacen extends conexion
 {
+  function reducirStock($idSolicitud)
+  {
+    $this->conectar();
+    $sql = "SELECT * FROM Detalle_solicitud_envio WHERE id_solicitud = '$idSolicitud'";
+    $respuesta = $this->conn->query($sql);
+
+    // Verificar si se encontró alguna fila
+    if ($respuesta->num_rows == 0) {
+      $this->desconectar();
+      return null;
+    }
+
+    while ($fila = $respuesta->fetch_assoc()) {
+      $idProductoAlmacen = $fila['id_producto_almacen'];
+      $cantidad = $fila['cantidad'];
+
+      $sqlCantidad = "SELECT cantidad FROM Producto_almacen WHERE id_producto_almacen = '$idProductoAlmacen'";
+      $respuestaCantidad = $this->conn->query($sqlCantidad);
+      $filaCantidad = $respuestaCantidad->fetch_assoc();
+      $cantidadActual = $filaCantidad['cantidad'];
+
+      $cantidadActual -= $cantidad;
+
+      $sqlUpdate = "UPDATE Producto_almacen SET cantidad = '$cantidadActual' WHERE id_producto_almacen = '$idProductoAlmacen'";
+      $this->conn->query($sqlUpdate);
+    }
+
+    $this->desconectar();
+    return true;
+  }
+
   function actualizarProducto($txtProducto, $txtDescripcion, $txtCantidad, $txtPrecio, $txtId)
   {
     $this->conectar();
