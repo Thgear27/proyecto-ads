@@ -52,14 +52,15 @@ class panelDetalleConfirmarIngresoProductos extends vista
         </div>
         <?php if ($solicitud['estado'] == "enviado") : ?>
           <input type="submit" style="margin-top: 20px;" name="btnConfirmarIngreso" id="btnConfirmarIngreso" value="Confirmar ingreso">
+        <?php endif; ?>
       </form>
-    <?php endif; ?>
 
-    <?php if ($solicitud['estado'] == "recibido") : ?>
-      <form action="/moduloVentas/getConfirmarIngresoProductos.php" target="_blank" class="form-buscar" method="POST">
-        <input type="submit" value="Descargar PDF" name="btnDescargarPdf">
-      </form>
-    <?php endif; ?>
+      <?php if ($solicitud['estado'] == "recibido") : ?>
+        <form target="_blank" action="/moduloVentas/getConfirmarIngresoProductos.php" class="form-buscar" method="POST">
+          <input type="number" name="id_solicitud" id="id_solicitud" value="<?= $idSolicitud ?>" hidden>
+          <input type="submit" style="margin-top: 20px;" value="Descargar PDF" name="btnDescargarPdf">
+        </form>
+      <?php endif; ?>
     </div>
 <?php
     $this->piePaginaShow();
