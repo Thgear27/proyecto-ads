@@ -13,7 +13,7 @@ class formEditarProductoAlmacen extends vista
       <input type="text" name="idProducto" minlength="4" maxlength="60" value="<?= $id ?>" hidden>
       <div>
         <label for="nombreProducto">Nombre del producto:</label>
-        <input type="text" id="nombreProducto" name="nombreProducto" minlength="4" maxlength="60" required>
+        <input type="text" id="nombreProducto" value="<?= $nombre ?>" name="nombreProducto" minlength="4" maxlength="60" required>
       </div>
       <div>
         <label for="descripcion">Descripción:</label>

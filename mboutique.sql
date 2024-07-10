@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jul 08, 2024 at 05:21 PM
+-- Generation Time: Jul 10, 2024 at 03:11 AM
 -- Server version: 5.7.44
 -- PHP Version: 8.2.21
 
@@ -45,8 +45,18 @@ CREATE TABLE `Producto_almacen` (
   `nombre_producto` varchar(60) DEFAULT NULL,
   `descripcion` varchar(90) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
-  `precio_unitario` double DEFAULT NULL
+  `precio_unitario` double DEFAULT NULL,
+  `estado` enum('activo','inactivo') NOT NULL DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Producto_almacen`
+--
+
+INSERT INTO `Producto_almacen` (`id_producto_almacen`, `nombre_producto`, `descripcion`, `cantidad`, `precio_unitario`, `estado`) VALUES
+(1, 'Mochila', 'Mochila escokar', 0, 12, 'activo'),
+(2, 'Cartuchera', 'Cartuchera escolar', 1, 11, 'activo'),
+(3, 'Teclado', 'Teclado', 8, 14, 'activo');
 
 -- --------------------------------------------------------
 
@@ -61,6 +71,15 @@ CREATE TABLE `Producto_tienda` (
   `cantidad` int(11) DEFAULT NULL,
   `precio_unitario` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Producto_tienda`
+--
+
+INSERT INTO `Producto_tienda` (`id_producto_tienda`, `nombre_producto`, `descripcion`, `cantidad`, `precio_unitario`) VALUES
+(1, 'Mochila', 'Mochila escokar', 13, 12),
+(2, 'Cartuchera', 'Cartuchera escolar', 2, 11),
+(3, 'Teclado', 'Teclado', 5, 14);
 
 -- --------------------------------------------------------
 
@@ -175,19 +194,19 @@ ALTER TABLE `Usuario`
 -- AUTO_INCREMENT for table `Detalle_solicitud_envio`
 --
 ALTER TABLE `Detalle_solicitud_envio`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `Producto_almacen`
 --
 ALTER TABLE `Producto_almacen`
-  MODIFY `id_producto_almacen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_producto_almacen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Producto_tienda`
 --
 ALTER TABLE `Producto_tienda`
-  MODIFY `id_producto_tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_producto_tienda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Rol`
@@ -199,13 +218,13 @@ ALTER TABLE `Rol`
 -- AUTO_INCREMENT for table `Solicitud_envio`
 --
 ALTER TABLE `Solicitud_envio`
-  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
