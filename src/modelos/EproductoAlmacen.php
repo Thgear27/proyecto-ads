@@ -89,7 +89,7 @@ class EproductoAlmacen extends conexion
   public function obtenerProductosAlmacen()
   {
     $this->conectar();
-    $sql = "SELECT * FROM Producto_almacen";
+    $sql = "SELECT * FROM Producto_almacen WHERE estado = 'activo'";
     $respuesta = $this->conn->query($sql);
 
     // Verificar si se encontró alguna fila
@@ -111,7 +111,7 @@ class EproductoAlmacen extends conexion
   public function obtenerProductosAlmacenPorNombre($nombre)
   {
     $this->conectar();
-    $sql = "SELECT * FROM Producto_almacen WHERE nombre_producto LIKE '%$nombre%'";
+    $sql = "SELECT * FROM Producto_almacen WHERE nombre_producto LIKE '%$nombre%' AND estado = 'activo'";
     $respuesta = $this->conn->query($sql);
 
     // Verificar si se encontró alguna fila
@@ -133,7 +133,7 @@ class EproductoAlmacen extends conexion
   public function eliminarProductoAlmacen($idProductoAlmacen)
   {
     $this->conectar();
-    $sql = "DELETE FROM Producto_almacen WHERE id_producto_almacen = '$idProductoAlmacen'";
+    $sql = "UPDATE Producto_almacen SET estado = 'inactivo' WHERE id_producto_almacen = '$idProductoAlmacen'";
     $this->conn->query($sql);
     $this->desconectar();
   }

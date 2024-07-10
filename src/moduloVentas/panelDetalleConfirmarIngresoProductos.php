@@ -4,12 +4,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloVentas/controlConfirmarIngresoP
 
 class panelDetalleConfirmarIngresoProductos extends vista
 {
-  function panelDetalleConfirmarIngresoProductosShow($idSolicitud)
+  function panelDetalleConfirmarIngresoProductosShow($productos = null, $solicitud = null, $idSolicitud = null)
   {
-    $controlConfirmarIngresoProductosObject = new controlConfirmarIngresoProductos();
-    $productos = $controlConfirmarIngresoProductosObject->obtenerProductosSolicitud($idSolicitud);
-    $solicitud = $controlConfirmarIngresoProductosObject->obtenerSolicitud($idSolicitud);
-
     $this->cabeceraShow("Detalle de solicitud");
 ?>
     <a class="regresar-boton" href="/moduloVentas/indexConfirmarIngresoProductos.php">Regresar al panel de solicitudes</a>
@@ -38,7 +34,7 @@ class panelDetalleConfirmarIngresoProductos extends vista
                     <td><?= $producto['nombre_producto']; ?></td>
                     <td><?= $producto['descripcion']; ?></td>
                     <td><?= $producto['cantidad_solicitada']; ?></td>
-                    <td><?= $producto['precio_unitario']; ?> S/.</td>
+                    <td>S/. <?= $producto['precio_unitario']; ?></td>
                   </tr>
                 <?php endforeach; ?>
 

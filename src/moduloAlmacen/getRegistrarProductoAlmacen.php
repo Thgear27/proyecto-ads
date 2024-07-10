@@ -69,5 +69,5 @@ if (validarBoton($btnRegistrarProducto)) {
   $formRegistrarProductoAlmacenObject->formRegistrarProductoAlmacenShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'No se ha enviado el formulario');
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'Error, no se pudo completar la acción');
 }

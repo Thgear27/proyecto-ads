@@ -4,16 +4,13 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/controlStockAlmacen.php
 
 class panelStockAlmacen extends vista
 {
-  public function panelStockAlmacenShow($nombre = null)
+  public function panelStockAlmacenShow($productos = null)
   {
-    $controlStockAlmacenObject = new controlStockAlmacen();
-    $productos = $controlStockAlmacenObject->obtenerProductosAlmacen($nombre);
-
     $this->cabeceraShow("Panel del stock almacen");
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>
     <div class="container">
-      <h1 style="margin-bottom: 20px;">Productos de Almacén</h1>
+      <h1 style="margin-bottom: 20px;">Stock Almacén</h1>
       <form class="form-buscar" action="/moduloAlmacen/getStockAlmacen.php" method="POST">
         <input type="text" class="input-buscar" id="inputBuscar" name="txtNombreProducto" placeholder="Buscar productos por nombre...">
         <input type="submit" class="submit-buscar" value="Buscar" name="btnBuscar" id="btnBuscar">
@@ -38,7 +35,7 @@ class panelStockAlmacen extends vista
                   <td><?= htmlspecialchars($producto['nombre_producto']) ?></td>
                   <td><?= htmlspecialchars($producto['descripcion']) ?></td>
                   <td><?= htmlspecialchars($producto['cantidad']) ?></td>
-                  <td><?= htmlspecialchars($producto['precio_unitario']) ?> S/.</td>
+                  <td>S/. <?= htmlspecialchars($producto['precio_unitario']) ?></td>
                   <td>
                     <a href="/moduloAlmacen/indexEditarProductoAlmacen.php?id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>&nombre=<?= htmlspecialchars($producto['nombre_producto']) ?>">Editar</a>
                     <a href="/moduloAlmacen/getStockAlmacen.php?accion=eliminar&id=<?= htmlspecialchars($producto['id_producto_almacen']) ?>">Eliminar</a>

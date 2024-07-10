@@ -17,8 +17,7 @@ class panelPrincipalSistema extends vista
         <div class="info">
           <h1>Bienvenido almacenero</h1>
           <p>Panel principal del sistema</p>
-          <p>Usuario: <?= $email ?></p>
-          <p>Rol: <?= $rol ?></p>
+          <p><i class="fa-regular fa-user"></i> Usuario: <?= $email ?></p>
         </div>
         <nav>
           <a class="nav-link" href="/moduloAlmacen/indexEmitirInformeProductoEnviados.php">Solicitudes de envío</a>
@@ -35,8 +34,7 @@ class panelPrincipalSistema extends vista
         <div class="info">
           <h1>Bienvenido asistente de tienda</h1>
           <p>Panel principal del sistema</p>
-          <p>Usuario: <?= $email ?></p>
-          <p>Rol: <?= $rol ?></p>
+          <p><i class="fa-regular fa-user"></i> Usuario: <?= $email ?></p>
         </div>
         <nav>
           <a class="nav-link" href="/moduloVentas/indexEmitirSolicitudEnvioProducto.php">Solicitar envío</a>
@@ -52,8 +50,7 @@ class panelPrincipalSistema extends vista
         <div class="info">
           <h1>Bienvenido administrador</h1>
           <p>Panel principal del sistema</p>
-          <p>Usuario: <?= $email ?></p>
-          <p>Rol: <?= $rol ?></p>
+          <p><i class="fa-regular fa-user"></i> Usuario: <?= $email ?></p>
         </div>
         <nav>
           <a class="nav-link" href="/moduloAlmacen/indexEmitirInformeProductoEnviados.php">Solicitudes de envío</a>

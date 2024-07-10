@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/panelStockAlmacen.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/EproductoAlmacen.php');
 
 session_start();
 
@@ -15,5 +16,16 @@ if ($rol != "almacen" && $rol != "administrador") {
   exit();
 }
 
+$nombre = $_GET['nombre'];
+$productos = null;
+
+if ($nombre != null) {
+  $EproductoAlmacenObject = new EproductoAlmacen();
+  $productos = $EproductoAlmacenObject->obtenerProductosAlmacenPorNombre($nombre);
+} else {
+  $EproductoAlmacenObject = new EproductoAlmacen();
+  $productos = $EproductoAlmacenObject->obtenerProductosAlmacen();
+}
+
 $panelStockAlmacenObject = new panelStockAlmacen();
-$panelStockAlmacenObject->panelStockAlmacenShow($_GET['nombre']);
+$panelStockAlmacenObject->panelStockAlmacenShow($productos);

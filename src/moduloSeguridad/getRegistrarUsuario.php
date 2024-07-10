@@ -28,17 +28,17 @@ function validarCampos($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $t
 {
   global $nombreCampoErroneo, $mensajeError;
 
-  if (empty($txtNombre) || strlen($txtNombre) < 4 || strlen($txtNombre) > 50) {
+  if (empty($txtNombre) || strlen($txtNombre) < 4 || strlen($txtNombre) > 50 || preg_match('/\d/', $txtNombre)) {
     $nombreCampoErroneo = 'Nombre';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 50 caracteres';
+    $mensajeError = 'El campo \"' . $nombreCampoErroneo . '\" debe tener al menos 4 caracteres y máximo 50 caracteres, y no debe contener números.';
     return false;
-  } elseif (empty($txtApePaterno) || strlen($txtApePaterno) < 4 || strlen($txtApePaterno) > 50) {
+  } elseif (empty($txtApePaterno) || strlen($txtApePaterno) < 4 || strlen($txtApePaterno) > 50 || preg_match('/\d/', $txtApePaterno)) {
     $nombreCampoErroneo = 'Apellido Paterno';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 50 caracteres';
+    $mensajeError = 'El campo \"' . $nombreCampoErroneo . '\" debe tener al menos 4 caracteres y máximo 50 caracteres, y no debe contener números.';
     return false;
-  } elseif (empty($txtApeMaterno) || strlen($txtApeMaterno) < 4 || strlen($txtApeMaterno) > 50) {
+  } elseif (empty($txtApeMaterno) || strlen($txtApeMaterno) < 4 || strlen($txtApeMaterno) > 50 || preg_match('/\d/', $txtApeMaterno)) {
     $nombreCampoErroneo = 'Apellido Materno';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 50 caracteres';
+    $mensajeError = 'El campo \"' . $nombreCampoErroneo . '\" debe tener al menos 4 caracteres y máximo 50 caracteres, y no debe contener números.';
     return false;
   } elseif (!filter_var($txtEmail, FILTER_VALIDATE_EMAIL) || strlen($txtEmail) > 100) {
     $nombreCampoErroneo = 'Email';
@@ -46,15 +46,15 @@ function validarCampos($txtNombre, $txtApePaterno, $txtApeMaterno, $txtEmail, $t
     return false;
   } elseif (empty($txtContrasena) || strlen($txtContrasena) < 4) {
     $nombreCampoErroneo = 'Contraseña';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres';
+    $mensajeError = 'El campo \"' . $nombreCampoErroneo . '\" tener al menos 4 caracteres';
     return false;
   } elseif (empty($txtTelefono) || strlen($txtTelefono) < 4 || strlen($txtTelefono) > 15) {
     $nombreCampoErroneo = 'Telefono';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' tener al menos 4 caracteres y maximo 15 caracteres';
+    $mensajeError = 'El campo \"' . $nombreCampoErroneo . '\" tener al menos 4 caracteres y maximo 15 caracteres';
     return false;
   } elseif (empty($id_rol)) {
     $nombreCampoErroneo = 'Rol';
-    $mensajeError = 'El campo ' . $nombreCampoErroneo . ' es requerido';
+    $mensajeError = 'El campo \"' . $nombreCampoErroneo . '\" es requerido';
     return false;
   }
   return true;
@@ -88,5 +88,5 @@ if (validarBoton($btnRegistrarse)) {
   $formRegistrarUsuarioObject->formRegistrarUsuarioShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Acceso denegado', 'No se ha enviado el formulario');
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Acceso denegado', 'Error, no se pudo completar la acción');
 }

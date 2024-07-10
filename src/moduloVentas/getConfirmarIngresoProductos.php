@@ -37,8 +37,8 @@ if (validarBoton($btnConfirmarIngreso)) {
   $controlConfirmarIngresoProductosObject->generarSolicitudPdf($idSolicitud);
 } else {
   $panelDetalleConfirmarIngresoProductosObject = new panelDetalleConfirmarIngresoProductos();
-  $panelDetalleConfirmarIngresoProductosObject->panelDetalleConfirmarIngresoProductosShow($idSolicitud);
+  $panelDetalleConfirmarIngresoProductosObject->panelDetalleConfirmarIngresoProductosShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'El formulario no ha sido enviado', '/moduloVentas/indexConfirmarIngresoProductos.php');
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'Error, no se pudo completar la acción', '/moduloVentas/indexConfirmarIngresoProductos.php');
 }

@@ -4,11 +4,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/controlEmitirInformePro
 
 class panelEmitirInformeProductosEnviados extends vista
 {
-  function panelEmitirInformeProductosEnviadosShow()
+  function panelEmitirInformeProductosEnviadosShow($solicitudes)
   {
-    $controlEmitirInformeProductosEnviadosObject = new controlEmitirInformeProductosEnviados();
-    $solicitudes = $controlEmitirInformeProductosEnviadosObject->obtenerSolicitudes();
-
     $this->cabeceraShow("Panel de informe productos");
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>

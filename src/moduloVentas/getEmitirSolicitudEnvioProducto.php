@@ -36,18 +36,6 @@ function validarProductos($productos)
   return true;
 }
 
-function validarNombreProducto($txtNombreProducto)
-{
-  global $mensajeError, $nombreCampoErroneo;
-  if (strlen($txtNombreProducto) < 4) {
-    $nombreCampoErroneo = 'Nombre Producto';
-    $mensajeError = 'El campo nombre del producto debe tener al menos 4 caracteres';
-    return false;
-  }
-  return true;
-}
-
-
 function redirigirIndexEmitirSolicitud()
 {
   header('Location: /moduloVentas/indexEmitirSolicitudEnvioProducto.php?nombre=' . $_POST['txtNombreProducto']);
@@ -72,19 +60,11 @@ if (validarBoton($btnGenerarSolicitudEnvio)) {
   }
 } elseif (validarBoton($btnBuscar)) {
   $txtNombreProducto = htmlspecialchars($_POST['txtNombreProducto'], ENT_QUOTES, 'UTF-8');
-  if(validarNombreProducto($txtNombreProducto)){
-    redirigirIndexEmitirSolicitud();
-  }else{
-    $panelEmitirSolicitudEnvioProductoObject = new panelEmitirSolicitudEnvioProducto();
-    $panelEmitirSolicitudEnvioProductoObject->panelEmitirSolicitudEnvioProductoShow();
-
-    $viewMessageSistemaObject = new viewMessageSistema();
-    $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', $mensajeError);
-  }
+  redirigirIndexEmitirSolicitud();
 } else {
   $panelEmitirSolicitudEnvioProductoObject = new panelEmitirSolicitudEnvioProducto();
   $panelEmitirSolicitudEnvioProductoObject->panelEmitirSolicitudEnvioProductoShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'El formulario no ha sido enviado', '/moduloVentas/indexEmitirSolicitudEnvioProducto.php');
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'Error, no se pudo completar la acción', '/moduloVentas/indexEmitirSolicitudEnvioProducto.php');
 }
