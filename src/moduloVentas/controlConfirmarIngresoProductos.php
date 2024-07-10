@@ -100,7 +100,7 @@ class controlConfirmarIngresoProductos
             <td>' . $producto['nombre_producto'] . '</td>
             <td>' . $producto['descripcion'] . '</td>
             <td>' . $producto['cantidad_solicitada'] . '</td>
-            <td>' . $producto['precio_unitario'] . ' S/.</td>
+            <td>S/. ' . $producto['precio_unitario'] . '</td>
         </tr>
       ';
     }
