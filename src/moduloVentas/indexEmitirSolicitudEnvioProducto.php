@@ -15,5 +15,15 @@ if ($rol != "tienda") {
   exit();
 }
 
+$nombre = $_GET['nombre'];
+$productos = null;
+if ($nombre != null) {
+  $EproductoAlmacenObject = new EproductoAlmacen();
+  $productos = $EproductoAlmacenObject->obtenerProductosAlmacenPorNombre($nombre);
+} else {
+  $EproductoAlmacenObject = new EproductoAlmacen();
+  $productos = $EproductoAlmacenObject->obtenerProductosAlmacen();
+}
+
 $panelEmitirSolicitudEnvioProductoObject = new panelEmitirSolicitudEnvioProducto();
-$panelEmitirSolicitudEnvioProductoObject->panelEmitirSolicitudEnvioProductoShow($_GET['nombre']);
+$panelEmitirSolicitudEnvioProductoObject->panelEmitirSolicitudEnvioProductoShow($productos);

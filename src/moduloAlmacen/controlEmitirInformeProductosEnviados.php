@@ -32,13 +32,13 @@ class controlEmitirInformeProductosEnviados
 
     if ($respuesta) {
       $panelDetalleSolicitudObject = new panelDetalleSolicitud();
-      $panelDetalleSolicitudObject->panelDetalleSolicitudShow($idSolicitud);
+      $panelDetalleSolicitudObject->panelDetalleSolicitudShow();
 
       $viewMessageSistemaObject = new viewMessageSistema();
       $viewMessageSistemaObject->viewMessageSistemaShow("success", "Éxito", "Se ha cambiado el estado de la solicitud correctamente.", "/moduloAlmacen/indexEmitirInformeProductoEnviados.php");
     } else {
       $panelDetalleSolicitudObject = new panelDetalleSolicitud();
-      $panelDetalleSolicitudObject->panelDetalleSolicitudShow($idSolicitud);
+      $panelDetalleSolicitudObject->panelDetalleSolicitudShow();
 
       $viewMessageSistemaObject = new viewMessageSistema();
       $viewMessageSistemaObject->viewMessageSistemaShow("error", "Error", "Ha ocurrido un error al cambiar el estado de la solicitud.", "/moduloAlmacen/indexEmitirInformeProductoEnviados.php");

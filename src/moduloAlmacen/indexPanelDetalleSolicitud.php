@@ -15,5 +15,13 @@ if ($rol != "almacen" && $rol != "administrador") {
   exit();
 }
 
+$idSolicitud = $_GET['id'];
+
+$solicitudEnvioObject = new EsolicitudEnvio();
+$productos = $solicitudEnvioObject->obtenerProductosSolicitud($idSolicitud);
+
+$solicitudEnvioObject = new EsolicitudEnvio();
+$solicitud = $solicitudEnvioObject->obtenerSolicitud($idSolicitud);
+
 $panelDetalleSolicitudObject = new panelDetalleSolicitud();
-$panelDetalleSolicitudObject->panelDetalleSolicitudShow($_GET['id']);
+$panelDetalleSolicitudObject->panelDetalleSolicitudShow($productos, $solicitud, $idSolicitud);

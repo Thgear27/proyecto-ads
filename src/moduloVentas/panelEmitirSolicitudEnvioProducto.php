@@ -4,11 +4,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/controlStockAlmacen.php
 
 class panelEmitirSolicitudEnvioProducto extends vista
 {
-  function panelEmitirSolicitudEnvioProductoShow($nombre = null)
+  function panelEmitirSolicitudEnvioProductoShow($productos = null)
   {
-    $controlStockAlmacenObject = new controlStockAlmacen();
-    $productos = $controlStockAlmacenObject->obtenerProductosAlmacen($nombre);
-
     $this->cabeceraShow("Panel del stock almacen", ["/assets/emitirSolicitudEnvioProducto.js"]);
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>

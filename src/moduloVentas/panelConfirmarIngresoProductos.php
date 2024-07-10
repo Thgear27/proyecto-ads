@@ -5,12 +5,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloVentas/controlConfirmarIngresoP
 
 class panelConfirmarIngresoProductos extends vista
 {
-  function panelConfirmarIngresoProductosShow()
-
+  function panelConfirmarIngresoProductosShow($solicitudes = null)
   {
-    $controlConfirmarIngresoProductosObject = new controlConfirmarIngresoProductos();
-    $solicitudes = $controlConfirmarIngresoProductosObject->obtenerSolicitudes();
-
     $this->cabeceraShow("Panel de confirmar ingreso de productos");
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>

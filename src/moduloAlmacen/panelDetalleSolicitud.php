@@ -4,14 +4,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/controlEmitirInformePro
 
 class panelDetalleSolicitud extends vista
 {
-  function panelDetalleSolicitudShow($idSolicitud)
+  function panelDetalleSolicitudShow($productos = null, $solicitud = null, $idSolicitud = null)
   {
-    $controlEmitirInformeProductosEnviadosObject = new controlEmitirInformeProductosEnviados();
-    $productos = $controlEmitirInformeProductosEnviadosObject->obtenerProductosSolicitud($idSolicitud);
-    $solicitud = $controlEmitirInformeProductosEnviadosObject->obtenerSolicitud($idSolicitud);
-
     $this->cabeceraShow("Detalle de solicitud");
-
 ?>
 
     <a class="regresar-boton" href="/moduloAlmacen/indexEmitirInformeProductoEnviados.php">Regresar al panel de solicitudes</a>

@@ -88,5 +88,5 @@ if (validarBoton($btnRegistrarse)) {
   $formRegistrarUsuarioObject->formRegistrarUsuarioShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Acceso denegado', 'No se ha enviado el formulario');
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Acceso denegado', 'Error, no se pudo completar la acción');
 }

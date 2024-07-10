@@ -26,19 +26,6 @@ function validarBoton($boton)
   return isset($boton);
 }
 
-function validarNombreProducto($txtNombreProducto)
-{
-  global $mensajeError, $nombreCampoErroneo;
-
-  if (strlen($txtNombreProducto) < 4) {
-    $nombreCampoErroneo = 'Nombre Producto';
-    $mensajeError = 'El campo nombre del producto debe tener al menos 4 caracteres';
-    return false;
-  }
-
-  return true;
-}
-
 function validarCamposEditar($txtNombreProducto, $txtDescripcion, $txtCantidad, $txtPrecio)
 {
   global $nombreCampoErroneo, $mensajeError;
@@ -114,16 +101,7 @@ function redirigirIndexStockAlmacen($txtNombreProducto)
 
 if (validarBoton($btnBuscar)) {
   $txtNombreProducto = htmlspecialchars($_POST['txtNombreProducto'], ENT_QUOTES, 'UTF-8');
-
-  if (validarNombreProducto($txtNombreProducto)) {
-    redirigirIndexStockAlmacen($txtNombreProducto);
-  } else {
-    $panelStockAlmacenObject = new panelStockAlmacen();
-    $panelStockAlmacenObject->panelStockAlmacenShow();
-
-    $viewMessageSistemaObject = new viewMessageSistema();
-    $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', $mensajeError);
-  }
+  redirigirIndexStockAlmacen($txtNombreProducto);
 } elseif (validarBoton($btnEditarProducto)) {
   $txtId = trim($_POST['idProducto']);
   $txtProducto = trim($_POST['nombreProducto']);
@@ -149,5 +127,5 @@ if (validarBoton($btnBuscar)) {
   $panelStockAlmacenObject->panelStockAlmacenShow();
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'No se ha enviado el formulario');
+  $viewMessageSistemaObject->viewMessageSistemaShow('error', 'Error', 'Error, no se pudo completar la acción');
 }

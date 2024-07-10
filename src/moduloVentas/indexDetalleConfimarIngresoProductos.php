@@ -15,5 +15,13 @@ if ($rol != "tienda") {
   exit();
 }
 
+$idSolicitud = $_GET['id'];
+
+$solicitudEnvioObject = new EsolicitudEnvio();
+$productos = $solicitudEnvioObject->obtenerProductosSolicitud($idSolicitud);
+
+$solicitudEnvioObject = new EsolicitudEnvio();
+$solicitud = $solicitudEnvioObject->obtenerSolicitud($idSolicitud);
+
 $panelDetalleConfirmarIngresoProductosObject = new panelDetalleConfirmarIngresoProductos();
-$panelDetalleConfirmarIngresoProductosObject->panelDetalleConfirmarIngresoProductosShow($_GET['id']);
+$panelDetalleConfirmarIngresoProductosObject->panelDetalleConfirmarIngresoProductosShow($productos, $solicitud, $idSolicitud);

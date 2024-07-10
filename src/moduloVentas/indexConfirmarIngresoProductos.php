@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloVentas/panelConfirmarIngresoProductos.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/EsolicitudEnvio.php');
 
 session_start();
 
@@ -15,5 +16,8 @@ if ($rol != "tienda") {
   exit();
 }
 
+$solicitudEnvioObject = new EsolicitudEnvio();
+$solicitudes = $solicitudEnvioObject->obtenerSolicitudes();
+
 $panelConfirmarIngresoProductosObject = new panelConfirmarIngresoProductos();
-$panelConfirmarIngresoProductosObject->panelConfirmarIngresoProductosShow();
+$panelConfirmarIngresoProductosObject->panelConfirmarIngresoProductosShow($solicitudes);

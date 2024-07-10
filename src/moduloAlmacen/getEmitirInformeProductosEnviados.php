@@ -34,5 +34,5 @@ if (validarBoton($btnEnviarProductos)) {
   $panelDetalleSolicitudObject->panelDetalleSolicitudShow($IdSolicitud);
 
   $viewMessageSistemaObject = new viewMessageSistema();
-  $viewMessageSistemaObject->viewMessageSistemaShow("error", "Error", "Ha ocurrido un error al enviar los productos.", "/moduloAlmacen/indexEmitirInformeProductoEnviados.php");
+  $viewMessageSistemaObject->viewMessageSistemaShow("error", "Error", "Error, no se pudo completar la acción", "/moduloAlmacen/indexEmitirInformeProductoEnviados.php");
 }

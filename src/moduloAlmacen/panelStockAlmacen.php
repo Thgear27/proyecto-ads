@@ -4,11 +4,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/controlStockAlmacen.php
 
 class panelStockAlmacen extends vista
 {
-  public function panelStockAlmacenShow($nombre = null)
+  public function panelStockAlmacenShow($productos = null)
   {
-    $controlStockAlmacenObject = new controlStockAlmacen();
-    $productos = $controlStockAlmacenObject->obtenerProductosAlmacen($nombre);
-
     $this->cabeceraShow("Panel del stock almacen");
 ?>
     <a class="regresar-boton" href="/moduloSeguridad/indexPanelPrincipal.php">Regresar al panel principal</a>

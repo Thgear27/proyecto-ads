@@ -1,5 +1,6 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'] . '/moduloAlmacen/panelEmitirInformeProductosEnviados.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/modelos/EsolicitudEnvio.php');
 
 session_start();
 
@@ -15,5 +16,8 @@ if ($rol != "almacen" && $rol != "administrador") {
   exit();
 }
 
+$solicitudEnvioObject = new EsolicitudEnvio();
+$solicitudes = $solicitudEnvioObject->obtenerSolicitudes();
+
 $panelEmitirInformeProductosEnviadosObject = new panelEmitirInformeProductosEnviados();
-$panelEmitirInformeProductosEnviadosObject->panelEmitirInformeProductosEnviadosShow();
+$panelEmitirInformeProductosEnviadosObject->panelEmitirInformeProductosEnviadosShow($solicitudes);
