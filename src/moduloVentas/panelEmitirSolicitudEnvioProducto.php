@@ -37,7 +37,7 @@ class panelEmitirSolicitudEnvioProducto extends vista
                     <td data-producto-nombre="<?= $producto['id_producto_almacen'] ?>"><?= htmlspecialchars($producto['nombre_producto']) ?></td>
                     <td data-producto-descripcion="<?= $producto['id_producto_almacen'] ?>"><?= htmlspecialchars($producto['descripcion']) ?></td>
                     <td data-producto-cantidad="<?= $producto['id_producto_almacen'] ?>"><?= htmlspecialchars($producto['cantidad']) ?></td>
-                    <td data-producto-precio-unitario="<?= $producto['id_producto_almacen'] ?>">S/. <?= htmlspecialchars($producto['precio_unitario']) ?></td>
+                    <td data-producto-precio-unitario="<?= $producto['id_producto_almacen'] ?>"><?= htmlspecialchars($producto['precio_unitario']) ?></td>
                     <td>
                       <button data-button-anadir="<?= $producto['id_producto_almacen'] ?>" class="create" <?php if ($producto['cantidad'] == 0) : ?> disabled <?php endif; ?>>
                         Añadir
